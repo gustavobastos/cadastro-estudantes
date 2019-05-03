@@ -43,7 +43,9 @@ class EstudantesController extends Controller
 
         DB::table('enderecos')->insert(['estudante' => $request->estudante,
         'cep' => $request->cep, 'rua'=>$request->rua, 'numero'=>$request->numero, 'complemento' => $request->complemento, 'bairro' => $request->bairro, 'cidade' => $request->cidade, 'estado' => $request->estado]);
-        
+
+        DB::table('maes')->insert(['nome' => $request->nomeMae,'cpf' => $request->cpfMae, 'data_pagamento'=>$request->dataPagamento]);
+
         return $request->all();
     }
 
