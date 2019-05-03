@@ -74,7 +74,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div>\n  <ce-cadastrar></ce-cadastrar>\n</div>\n<router-outlet></router-outlet>\n"
+module.exports = "\n<header>\n  <ce-header></ce-header>\n</header>\n\n<div>\n  <ce-cadastrar></ce-cadastrar>\n</div>\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -127,6 +127,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cadastrar/cadastrar.component */ "./src/app/cadastrar/cadastrar.component.ts");
 /* harmony import */ var _listar_listar_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./listar/listar.component */ "./src/app/listar/listar.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+
 
 
 
@@ -142,7 +144,8 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
                 _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_5__["CadastrarComponent"],
-                _listar_listar_component__WEBPACK_IMPORTED_MODULE_6__["ListarComponent"]
+                _listar_listar_component__WEBPACK_IMPORTED_MODULE_6__["ListarComponent"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_7__["HeaderComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -209,6 +212,62 @@ var CadastrarComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], CadastrarComponent);
     return CadastrarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/header/header.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/header/header.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/header/header.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/header/header.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row bg-primary\">\n  <div class=\"col-2\">\n    <img class =\" ml-2 logo\" src =\"img/5.png\">\n  </div>\n  <h1 class=\"col-10 text-white-50\">Escola Municipal do Bom Menino</h1>\n</div>\n<div class=\"row fundo\">\n  <img class =\"col-12 fundo\" src =\"img/4.jpg\">\n</div>\n<div class=\"row imagens\">\n  <img class =\"col-4 mt-4\" src =\"img/1.png\">\n  <img class =\"col-4\" src =\"img/2.png\">\n  <img class =\"col-4 mt-4\" src =\"img/3.png\">\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/header/header.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/header/header.component.ts ***!
+  \********************************************/
+/*! exports provided: HeaderComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var HeaderComponent = /** @class */ (function () {
+    function HeaderComponent() {
+    }
+    HeaderComponent.prototype.ngOnInit = function () {
+    };
+    HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'ce-header',
+            template: __webpack_require__(/*! ./header.component.html */ "./src/app/header/header.component.html"),
+            styles: [__webpack_require__(/*! ./header.component.css */ "./src/app/header/header.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], HeaderComponent);
+    return HeaderComponent;
 }());
 
 

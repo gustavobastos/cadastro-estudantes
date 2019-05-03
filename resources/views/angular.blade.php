@@ -10,21 +10,8 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <header>
-    <div class="row bg-primary">
-      <h1 class="col text-white-50">Escola Municipal do Bom Menino</h1>
-    </div>
-    <div class="row imagens">
-      <img class ="col-4" src ="img/1.png">
-      <img class ="col-4" src ="img/2.png">
-      <img class ="col-4" src ="img/3.png">
-    </div>
-  </header>
-<br>
-<hr>
+
   <ce-root></ce-root>
-<hr>
-<br>
   <footer>
   <div class="row bottom rodape">
     <span class="col-1">V 1.0</span>
