@@ -68,7 +68,7 @@ class EstudantesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -89,8 +89,10 @@ class EstudantesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete(Request $request)
     {
-        //
+
+          DB::table('estudantes')->delete(["$request->id"]);
+          return view("angular");
     }
 }

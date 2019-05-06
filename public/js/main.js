@@ -23,6 +23,54 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/api.service.ts":
+/*!********************************!*\
+  !*** ./src/app/api.service.ts ***!
+  \********************************/
+/*! exports provided: ApiService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiService", function() { return ApiService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+
+
+
+var ApiService = /** @class */ (function () {
+    function ApiService(http) {
+        this.http = http;
+        this.estudantes = [];
+    }
+    ApiService.prototype.getEstudantes = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var response;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.http.get('http://localhost:8000/estudantes')
+                            .toPromise()];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response.json()];
+                }
+            });
+        });
+    };
+    ApiService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"]])
+    ], ApiService);
+    return ApiService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -39,7 +87,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var routes = [];
+var routes = [
+//{ path:'listar', component:ListarComponent},
+//{ path:'cadastrar', component:CadastrarComponent}
+];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
@@ -74,7 +125,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<header>\n  <ce-header></ce-header>\n</header>\n\n<div>\n  <ce-cadastrar></ce-cadastrar>\n</div>\n<router-outlet></router-outlet>\n"
+module.exports = "\n<header>\n  <ce-header></ce-header>\n</header>\n\n<div>\n  <ce-listar></ce-listar>\n</div>\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -128,6 +179,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cadastrar/cadastrar.component */ "./src/app/cadastrar/cadastrar.component.ts");
 /* harmony import */ var _listar_listar_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./listar/listar.component */ "./src/app/listar/listar.component.ts");
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+
 
 
 
@@ -149,7 +202,8 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_8__["HttpModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -236,7 +290,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row bg-primary\">\n  <div class=\"col-2\">\n    <img class =\" ml-2 logo\" src =\"img/5.png\">\n  </div>\n  <h1 class=\"col-10 text-white-50\">Escola Municipal do Bom Menino</h1>\n</div>\n<div class=\"row fundo\">\n  <img class =\"col-12 fundo\" src =\"img/4.jpg\">\n</div>\n<div class=\"row imagens\">\n  <img class =\"col-4 mt-4\" src =\"img/1.png\">\n  <img class =\"col-4\" src =\"img/2.png\">\n  <img class =\"col-4 mt-4\" src =\"img/3.png\">\n</div>\n"
+module.exports = "<div class=\"row\">\n    <div class=\"col-12 topo\">\n      <div class=\"row\">\n        <div class=\"col-1\">\n          <img class =\"logo  ml-2 \" src =\"img/5.png\">\n        </div> \n      </div>\n    </div>\n</div>\n\n<div class=\"row fundo\">\n  <img class =\"col-12 fundo\" src =\"img/4.jpg\">\n</div>\n<div class=\"row imagens\">\n  <img class =\"col-4 mt-4\" src =\"img/1.png\">\n  <img class =\"col-4\" src =\"img/2.png\">\n  <img class =\"col-4 mt-4\" src =\"img/3.png\">\n</div>\n<div class=\"row\">\n  <nav class=\"col-12 navbar navbar-expand-lg navbar-dark menu\">\n  <a class=\"navbar-brand\" href=\"#\"></a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Alunos</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Cadastrar</a>\n    </ul>\n  </div>\n</nav>\n</div>\n"
 
 /***/ }),
 
@@ -292,7 +346,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  listar works!\n</p>\n"
+module.exports = "<div class = \"row container mt-4 ml-4 mb-4\">\n  <div class=\"col-10\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-2\">\n\n  </div>\n  </div>\n\n<div class = \"container mt-4\" *ngFor=\"let estudante of estudantes\">\n<div class = \"row mb-1\" >\n    <div class = \"col-4 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-1\">\n      <form action=\"/estudantes\" method=\"get\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-2 float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-1\">\n      <form action=\"/estudantes/delete\" method=\"post\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-danger mr-2 float-right\">Deletar</button>\n      </form>\n    </div>\n</div>\n<hr>\n</div>\n"
 
 /***/ }),
 
@@ -308,20 +362,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListarComponent", function() { return ListarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
+
 
 
 var ListarComponent = /** @class */ (function () {
-    function ListarComponent() {
+    function ListarComponent(apiService) {
+        var _this = this;
+        this.apiService = apiService;
+        this.apiService.getEstudantes()
+            .then(function (estudantes) { return _this.estudantes = estudantes; });
     }
-    ListarComponent.prototype.ngOnInit = function () {
-    };
     ListarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'ce-listar',
             template: __webpack_require__(/*! ./listar.component.html */ "./src/app/listar/listar.component.html"),
             styles: [__webpack_require__(/*! ./listar.component.css */ "./src/app/listar/listar.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"]])
     ], ListarComponent);
     return ListarComponent;
 }());

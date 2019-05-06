@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('estudantes','EstudantesController');
+Route::post('estudantes/delete/','EstudantesController@delete');

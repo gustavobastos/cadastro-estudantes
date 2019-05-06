@@ -12,19 +12,7 @@
 <body>
 
   <ce-root></ce-root>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <footer>
-  <div class="row bottom rodape">
-    <span class="col-1">V 1.0</span>
-    <span class="col-7"></span>
-    <span class="col-4 text-right">Autor: Gustavo Bastos</span>
-  </footer>
-</header>
+  
 <script type="text/javascript" src="js/runtime.js"></script>
 <script type="text/javascript" src="js/es2015-polyfills.js" nomodule></script>
 <script type="text/javascript" src="js/polyfills.js"></script>
