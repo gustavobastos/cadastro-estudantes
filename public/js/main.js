@@ -84,12 +84,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _listar_listar_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./listar/listar.component */ "./src/app/listar/listar.component.ts");
+/* harmony import */ var _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cadastrar/cadastrar.component */ "./src/app/cadastrar/cadastrar.component.ts");
+/* harmony import */ var _editar_editar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editar/editar.component */ "./src/app/editar/editar.component.ts");
+
+
+
 
 
 
 var routes = [
-//{ path:'listar', component:ListarComponent},
-//{ path:'cadastrar', component:CadastrarComponent}
+    { path: '', component: _listar_listar_component__WEBPACK_IMPORTED_MODULE_3__["ListarComponent"] },
+    { path: 'cadastrar', component: _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_4__["CadastrarComponent"] },
+    { path: 'editar', component: _editar_editar_component__WEBPACK_IMPORTED_MODULE_5__["EditarComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -125,7 +132,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<header>\n  <ce-header></ce-header>\n</header>\n\n<div>\n  <ce-listar></ce-listar>\n</div>\n<router-outlet></router-outlet>\n"
+module.exports = "<header>\n<ce-header></ce-header>\n</header>\n<div>\n<router-outlet></router-outlet>\n</div>\n"
 
 /***/ }),
 
@@ -145,7 +152,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = 'cadastro-estudantes';
+        this.title = 'Escola';
     }
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -175,11 +182,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cadastrar/cadastrar.component */ "./src/app/cadastrar/cadastrar.component.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _listar_listar_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./listar/listar.component */ "./src/app/listar/listar.component.ts");
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./cadastrar/cadastrar.component */ "./src/app/cadastrar/cadastrar.component.ts");
+/* harmony import */ var _editar_editar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./editar/editar.component */ "./src/app/editar/editar.component.ts");
+
 
 
 
@@ -195,18 +204,19 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-                _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_5__["CadastrarComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
                 _listar_listar_component__WEBPACK_IMPORTED_MODULE_6__["ListarComponent"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_7__["HeaderComponent"]
+                _header_header_component__WEBPACK_IMPORTED_MODULE_7__["HeaderComponent"],
+                _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_8__["CadastrarComponent"],
+                _editar_editar_component__WEBPACK_IMPORTED_MODULE_9__["EditarComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-                _angular_http__WEBPACK_IMPORTED_MODULE_8__["HttpModule"]
+                _angular_http__WEBPACK_IMPORTED_MODULE_4__["HttpModule"],
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -254,18 +264,72 @@ __webpack_require__.r(__webpack_exports__);
 
 var CadastrarComponent = /** @class */ (function () {
     function CadastrarComponent() {
+        this.title = 'Cadastrar Aluno';
     }
-    CadastrarComponent.prototype.ngOnInit = function () {
-    };
     CadastrarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'ce-cadastrar',
             template: __webpack_require__(/*! ./cadastrar.component.html */ "./src/app/cadastrar/cadastrar.component.html"),
             styles: [__webpack_require__(/*! ./cadastrar.component.css */ "./src/app/cadastrar/cadastrar.component.css")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        })
     ], CadastrarComponent);
     return CadastrarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/editar/editar.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/editar/editar.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2VkaXRhci9lZGl0YXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/editar/editar.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/editar/editar.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class = \"container central\">\n<div class=\"card border-warning\">\n  <h5 class=\"card-header\">Editar Aluno</h5>\n  <div class=\"card-body\">\n    <form action=\"/action_page.php\">\n      <fieldset>\n        <legend>Dados do Aluno</legend>\n        <div class=\"form-group row\">\n            <div class = \"col-8\">\n            <label for=\"nome\">Nome Completo:</label>\n            <input type=\"text\" size=\"100\" class=\"form-control\" id=\"nome\" aria-describedby=\"nomeHelp\">\n            <small id=\"nomeHelp\" class=\"form-text text-muted\">máximo 100 caracteres.</small>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row\">\n        <div class = \"col-3\">\n        <label for=\"dataNascimento\">Data de nascimento:</label>\n        <input class = \"mr-4 form-control\" id=\"dataNascimento\" type=\"date\" name=\"data_nascimento\" placeholder=\"dd/mm/AAAA\">\n        </div>\n        <div class=\"col-3\">\n        <label for=\"serieIngresso\">Série de ingresso:</label>\n        <select class = \"custom select\">\n          <option value=\"1\">1º Ano</option>\n          <option value=\"2\">2º Ano</option>\n          <option value=\"3\">3º Ano</option>\n          <option value=\"4\">4º Ano</option>\n          <option value=\"5\">5º Ano</option>\n          <option value=\"6\">6º Ano</option>\n          <option value=\"7\">7º Ano</option>\n          <option value=\"8\">8º Ano</option>\n          <option value=\"9\">9º Ano</option>\n          </select>\n          </div>\n          </div>\n      </div>\n    </fieldset>\n      <hr>\n      <fieldset>\n        <legend>Dados da Mãe</legend>\n      <div class=\"form-group\">\n      <div class = \"row\">\n        <div  class=\"col-6\">\n            <label for=\"nomeDaMae\">Nome da mãe:</label>\n            <input class=\"form-control\" type=\"text\" name=\"nomeMae\">\n        </div>\n      </div>\n      </div>\n\n      <div class=\"form-group\">\n      <div class = \"row mt-3\">\n        <div class=\"col-3\">\n          <label for=\"cpfDaMae\">CPF da mãe:</label>\n          <input class = \"mr-4 form-control\" type=\"text\" name=\"cpfMae\" placeholder=\"XXXXXXXXXXX\">\n        </div>\n\n      <div class=\"col-3\">\n         <label for=\"dataPagamento\">Data de pagamento:</label>\n         <input class=\"form-control\" type=\"date\" name=\"dataPagamento\" placeholder=\"dd/mm/AAAA\">\n      </div>\n      </div>\n      </div>\n      </fieldset>\n      <hr>\n\n      <fieldset>\n        <legend>Endereço</legend>\n        <div class = \"row mt-2\">\n          <div class=\"col-8\">\n            <label for=\"rua\">Rua:</label>\n            <input class = \"form-control\" type=\"text\" name=\"rua\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"complemento\">Complemento:</label>\n            <input class = \"form-control\" type=\"text\" name=\"complemento\">\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\">\n            <label for=\"bairro\">Bairro:</label>\n            <input class=\"form-control\" type=\"text\" name=\"bairro\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"cep\">CEP:</label>\n            <input type=\"text\" class=\"form-control\" name=\"cep\">\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-1\">\n            <label for=\"estado\">Estado:</label>\n            <input class=\"mr-2 form-control\" type=\"text\" name=\"estado\">\n          </div>\n          <div class=\"col-6\">\n            <label for=\"cidade\">Cidade:</label>\n            <input class=\"form-control\" type=\"text\" name=\"cidade\">\n          </div>\n        </div>\n      </div>\n      </fieldset>\n\n\n      <div class = \"row mt-3\">\n        <input class = \"btn btn-warning col-12\" type=\"submit\" value=\"Salvar\">\n      </div>\n    </form>\n  </div>\n</div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/editar/editar.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/editar/editar.component.ts ***!
+  \********************************************/
+/*! exports provided: EditarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditarComponent", function() { return EditarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var EditarComponent = /** @class */ (function () {
+    function EditarComponent() {
+    }
+    EditarComponent.prototype.ngOnInit = function () {
+    };
+    EditarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'ce-editar',
+            template: __webpack_require__(/*! ./editar.component.html */ "./src/app/editar/editar.component.html"),
+            styles: [__webpack_require__(/*! ./editar.component.css */ "./src/app/editar/editar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], EditarComponent);
+    return EditarComponent;
 }());
 
 
@@ -290,7 +354,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-12 topo\">\n      <div class=\"row\">\n        <div class=\"col-1\">\n          <img class =\"logo  ml-2 \" src =\"img/5.png\">\n        </div> \n      </div>\n    </div>\n</div>\n\n<div class=\"row fundo\">\n  <img class =\"col-12 fundo\" src =\"img/4.jpg\">\n</div>\n<div class=\"row imagens\">\n  <img class =\"col-4 mt-4\" src =\"img/1.png\">\n  <img class =\"col-4\" src =\"img/2.png\">\n  <img class =\"col-4 mt-4\" src =\"img/3.png\">\n</div>\n<div class=\"row\">\n  <nav class=\"col-12 navbar navbar-expand-lg navbar-dark menu\">\n  <a class=\"navbar-brand\" href=\"#\"></a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Alunos</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Cadastrar</a>\n    </ul>\n  </div>\n</nav>\n</div>\n"
+module.exports = "<div class=\"row\">\n    <div class=\"col-12 topo\">\n      <div class=\"row\">\n        <div class=\"col-1\">\n          <img class =\"logo  ml-2 \" src =\"img/5.png\">\n        </div>\n      </div>\n    </div>\n</div>\n\n<div class=\"row fundo\">\n  <img class =\"col-12 fundo\" src =\"img/4.jpg\">\n</div>\n<div class=\"row imagens\">\n  <img class =\"col-4 mt-4\" src =\"img/1.png\">\n  <img class =\"col-4 mt-4\" src =\"img/2.png\">\n  <img class =\"col-4 mt-4\" src =\"img/3.png\">\n</div>\n<div class=\"row\">\n  <nav class=\"col-12 navbar navbar-expand-lg navbar-dark menu\">\n  <a class=\"navbar-brand\" href=\"#\"></a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['']\">Alunos</a>\n      </li>\n    </ul>\n  </div>\n</nav>\n</div>\n"
 
 /***/ }),
 
@@ -346,7 +410,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"row container mt-4 ml-4 mb-4\">\n  <div class=\"col-10\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-2\">\n\n  </div>\n  </div>\n\n<div class = \"container mt-4\" *ngFor=\"let estudante of estudantes\">\n<div class = \"row mb-1\" >\n    <div class = \"col-4 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-1\">\n      <form action=\"/estudantes\" method=\"get\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-2 float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-1\">\n      <form action=\"/estudantes/delete\" method=\"post\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-danger mr-2 float-right\">Deletar</button>\n      </form>\n    </div>\n</div>\n<hr>\n</div>\n"
+module.exports = "<div class = \"row container mt-4 ml-4 mb-4\">\n  <div class=\"col-11\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-1\">\n    <a [routerLink]=\"['/cadastrar']\"><i class=\"fas fa-user-plus fa-3x mt-3 text-primary\"></i></a>\n  </div>\n</div>\n\n<div class = \"container mt-5\" *ngFor=\"let estudante of estudantes\">\n<div class = \"row mb-1\" >\n    <div class = \"col-4 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-1\">\n      <form action=\"/estudantes/edit\" method=\"post\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-2 float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-1\">\n      <form action=\"/estudantes/delete\" method=\"post\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-danger mr-2 float-right\">Deletar</button>\n      </form>\n    </div>\n</div>\n<hr>\n</div>\n"
 
 /***/ }),
 
