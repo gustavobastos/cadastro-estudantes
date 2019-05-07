@@ -27,3 +27,4 @@ Route::get('estudantes/endereco/{id}','EstudantesController@endereco');
 Route::get('estudantes/mae/{id}','EstudantesController@mae');
 Route::post('estudantes/update','EstudantesController@update');
 Route::post('estudantes/cadastra','EstudantesController@cadastra');
+Route::get('estudantes/delete/{id}','EstudantesController@delete');

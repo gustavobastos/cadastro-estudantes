@@ -100,6 +100,20 @@ var ApiService = /** @class */ (function () {
             });
         });
     };
+    ApiService.prototype.delete = function (id) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var response;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.http.get('/estudantes/delete/' + id)
+                            .toPromise()];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, (response.json())];
+                }
+            });
+        });
+    };
     ApiService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
@@ -224,13 +238,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _listar_listar_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./listar/listar.component */ "./src/app/listar/listar.component.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./cadastrar/cadastrar.component */ "./src/app/cadastrar/cadastrar.component.ts");
-/* harmony import */ var _editar_editar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./editar/editar.component */ "./src/app/editar/editar.component.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _listar_listar_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./listar/listar.component */ "./src/app/listar/listar.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./cadastrar/cadastrar.component */ "./src/app/cadastrar/cadastrar.component.ts");
+/* harmony import */ var _editar_editar_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./editar/editar.component */ "./src/app/editar/editar.component.ts");
+/* harmony import */ var _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modal-focus/modal-focus.component */ "./src/app/modal-focus/modal-focus.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+
+
 
 
 
@@ -247,19 +269,30 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _listar_listar_component__WEBPACK_IMPORTED_MODULE_6__["ListarComponent"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_7__["HeaderComponent"],
-                _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_8__["CadastrarComponent"],
-                _editar_editar_component__WEBPACK_IMPORTED_MODULE_9__["EditarComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+                _listar_listar_component__WEBPACK_IMPORTED_MODULE_7__["ListarComponent"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_8__["HeaderComponent"],
+                _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_9__["CadastrarComponent"],
+                _editar_editar_component__WEBPACK_IMPORTED_MODULE_10__["EditarComponent"],
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_11__["NgbdModalFocus"],
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_11__["NgbdModalConfirm"],
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_11__["NgbdModalConfirmAutofocus"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-                _angular_http__WEBPACK_IMPORTED_MODULE_4__["HttpModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_5__["HttpModule"],
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"],
             ],
-            providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+            entryComponents: [
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_11__["NgbdModalConfirm"],
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_11__["NgbdModalConfirmAutofocus"]
+            ],
+            exports: [_modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_11__["NgbdModalConfirm"],
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_11__["NgbdModalConfirmAutofocus"]],
+            providers: [{ provide: "windowObject", useValue: window }],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -470,7 +503,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container mt-4 ml-4 mb-4\">\n<div class = \"row\">\n  <div class=\"col-11\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-1\">\n    <a [routerLink]=\"['cadastrar']\"><i class=\"fas fa-user-plus fa-3x mt-3 text-primary\"></i></a>\n  </div>\n</div>\n</div>\n\n<div class = \"container mt-5\" *ngFor=\"let estudante of estudantes\">\n<hr>\n<div class = \"row mb-1\" >\n    <div class = \"col-4 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-1\">\n      <form [routerLink]=\"['editar',estudante.id]\" method=\"get\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-2 float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-1\">\n      <form action=\"estudantes\" method=\"post\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-danger mr-2 float-right\">Deletar</button>\n      </form>\n    </div>\n</div>\n</div>\n"
+module.exports = "<div class = \"container mt-4 ml-4 mb-4\">\n<div class = \"row\">\n  <div class=\"col-11\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-1\">\n    <a [routerLink]=\"['cadastrar']\"><i class=\"fas fa-user-plus fa-3x mt-3 text-primary\"></i></a>\n  </div>\n</div>\n</div>\n\n<div class = \"container mt-5\" *ngFor=\"let estudante of estudantes\">\n<hr>\n<div class = \"row mb-1\" >\n    <div class = \"col-4 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-1\">\n      <form [routerLink]=\"['editar',estudante.id]\" method=\"get\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-2 float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-1\">\n      <ce-ngbd-modal-focus id=\"{{estudante.id}}\"></ce-ngbd-modal-focus>\n    </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -506,6 +539,133 @@ var ListarComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"]])
     ], ListarComponent);
     return ListarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modal-focus/modal-focus.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/modal-focus/modal-focus.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZGFsLWZvY3VzL21vZGFsLWZvY3VzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/modal-focus/modal-focus.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/modal-focus/modal-focus.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn btn-danger mr-2\" (click)=\"open('focusFirst')\">Deletar</button>\n"
+
+/***/ }),
+
+/***/ "./src/app/modal-focus/modal-focus.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/modal-focus/modal-focus.component.ts ***!
+  \******************************************************/
+/*! exports provided: ModalFocusComponent, NgbdModalConfirm, NgbdModalConfirmAutofocus, NgbdModalFocus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalFocusComponent", function() { return ModalFocusComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgbdModalConfirm", function() { return NgbdModalConfirm; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgbdModalConfirmAutofocus", function() { return NgbdModalConfirmAutofocus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgbdModalFocus", function() { return NgbdModalFocus; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+
+
+
+var ModalFocusComponent = /** @class */ (function () {
+    function ModalFocusComponent() {
+    }
+    ModalFocusComponent.prototype.ngOnInit = function () {
+    };
+    ModalFocusComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'ce-modal-focus',
+            template: __webpack_require__(/*! ./modal-focus.component.html */ "./src/app/modal-focus/modal-focus.component.html"),
+            styles: [__webpack_require__(/*! ./modal-focus.component.css */ "./src/app/modal-focus/modal-focus.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ModalFocusComponent);
+    return ModalFocusComponent;
+}());
+
+var NgbdModalConfirm = /** @class */ (function () {
+    function NgbdModalConfirm(modal, window) {
+        this.modal = modal;
+    }
+    NgbdModalConfirm_1 = NgbdModalConfirm;
+    NgbdModalConfirm.prototype.deleta = function () {
+        window.location.href = "/estudantes/delete/" + NgbdModalConfirm_1.id;
+        this.modal.close('Ok click');
+    };
+    var NgbdModalConfirm_1;
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('id'),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], NgbdModalConfirm, "id", void 0);
+    NgbdModalConfirm = NgbdModalConfirm_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'ngbd-modal-confirm',
+            template: "\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-title\">Deletar aluno</h4>\n    <button type=\"button\" class=\"close\" aria-describedby=\"modal-title\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <p><strong>Voc\u00EA tem certeza que deseja exluir o(a) aluno(a) {{nome}}?</strong></p>\n    <p><span class=\"text-danger\">Esta opera\u00E7\u00E3o n\u00E3o poder\u00E1 ser desfeita.</span></p>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-outline-secondary\" (click)=\"modal.dismiss('cancel click')\">Cancel</button>\n    <button type=\"button\" class=\"btn btn-danger\" (click)=\"deleta()\">Ok</button>\n  </div>\n  "
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])("windowObject")),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbActiveModal"], Window])
+    ], NgbdModalConfirm);
+    return NgbdModalConfirm;
+}());
+
+var NgbdModalConfirmAutofocus = /** @class */ (function () {
+    function NgbdModalConfirmAutofocus(modal) {
+        this.modal = modal;
+    }
+    NgbdModalConfirmAutofocus = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'ngbd-modal-confirm-autofocus',
+            template: "\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-title\">Profile deletion</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close button\" aria-describedby=\"modal-title\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <p><strong>Are you sure you want to delete <span class=\"text-primary\">\"John Doe\"</span> profile?</strong></p>\n    <p>All information associated to this user profile will be permanently deleted.\n    <span class=\"text-danger\">This operation can not be undone.</span>\n    </p>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-outline-secondary\" (click)=\"modal.dismiss('cancel click')\">Cancel</button>\n    <button type=\"button\" ngbAutofocus class=\"btn btn-danger\" (click)=\"modal.close('Ok click')\">Ok</button>\n  </div>\n  "
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbActiveModal"]])
+    ], NgbdModalConfirmAutofocus);
+    return NgbdModalConfirmAutofocus;
+}());
+
+var MODALS = {
+    focusFirst: NgbdModalConfirm,
+    autofocus: NgbdModalConfirmAutofocus
+};
+var NgbdModalFocus = /** @class */ (function () {
+    function NgbdModalFocus(_modalService) {
+        this._modalService = _modalService;
+        this.withAutofocus = "<button type=\"button\" ngbAutofocus class=\"btn btn-danger\"\n      (click)=\"modal.close('Ok click')\">Ok</button>";
+    }
+    NgbdModalFocus.prototype.open = function (name) {
+        NgbdModalConfirm.id = this.id;
+        this._modalService.open(MODALS[name]);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('id'),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], NgbdModalFocus.prototype, "id", void 0);
+    NgbdModalFocus = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'ce-ngbd-modal-focus',
+            template: __webpack_require__(/*! ././modal-focus.component.html */ "./src/app/modal-focus/modal-focus.component.html")
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
+    ], NgbdModalFocus);
+    return NgbdModalFocus;
 }());
 
 
