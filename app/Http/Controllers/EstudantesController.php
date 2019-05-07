@@ -13,10 +13,58 @@ class EstudantesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+      public function index()
+      {
+          //
+          return \App\Estudante::all();
+      }
+
+
+    public function estudante($id){
+      $query = DB::table('estudantes');
+      $query->select('*');
+      $query->where('id', '=', $id);
+
+      $rows = $query->get()->toArray();
+      return json_encode($rows[0]);
+    }
+
+    public function endereco($id)
     {
-        //
-        return \App\Estudante::all();
+      $query = DB::table('endereco');
+      $query->select('*');
+      $query->where('id', '=', $id);
+
+      $rows = $query->get()->toArray();
+      return json_encode($rows[0]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function mae($id)
+    {
+      $query = DB::table('estudantes');
+      $query->select('mae');
+      $query->where('id', '=', $id);
+
+      $rows = $query->get()->toArray();
+      $mae =  $rows[0]->mae;
+
+
+      $query = DB::table('maes');
+      $query->select('*');
+      $query->where('cpf', '=', $mae);
+
+      $rows = $query->get()->toArray();
+
+      return json_encode($rows[0]);
+
     }
 
     /**
@@ -60,16 +108,7 @@ class EstudantesController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return $id;
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -89,10 +128,10 @@ class EstudantesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request)
+    public function delete($id)
     {
 
           DB::table('estudantes')->delete(["$request->id"]);
-          return view("angular");
+          return "sucesso";
     }
 }

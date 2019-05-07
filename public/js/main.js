@@ -42,18 +42,31 @@ __webpack_require__.r(__webpack_exports__);
 var ApiService = /** @class */ (function () {
     function ApiService(http) {
         this.http = http;
-        this.estudantes = [];
     }
     ApiService.prototype.getEstudantes = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var response;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.http.get('http://localhost:8000/estudantes')
+                    case 0: return [4 /*yield*/, this.http.get('/estudantes')
                             .toPromise()];
                     case 1:
                         response = _a.sent();
                         return [2 /*return*/, response.json()];
+                }
+            });
+        });
+    };
+    ApiService.prototype.getEstudanteData = function (id) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var response;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.http.get('/estudantes/estudante/' + id)
+                            .toPromise()];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, (response.json())];
                 }
             });
         });
@@ -95,8 +108,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: '', component: _listar_listar_component__WEBPACK_IMPORTED_MODULE_3__["ListarComponent"] },
-    { path: 'cadastrar', component: _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_4__["CadastrarComponent"] },
-    { path: 'editar', component: _editar_editar_component__WEBPACK_IMPORTED_MODULE_5__["EditarComponent"] }
+    { path: 'editar', component: _editar_editar_component__WEBPACK_IMPORTED_MODULE_5__["EditarComponent"] },
+    { path: 'editar/:id', component: _editar_editar_component__WEBPACK_IMPORTED_MODULE_5__["EditarComponent"] },
+    { path: 'cadastrar', component: _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_4__["CadastrarComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -298,7 +312,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container central\">\n<div class=\"card border-warning\">\n  <h5 class=\"card-header\">Editar Aluno</h5>\n  <div class=\"card-body\">\n    <form action=\"/action_page.php\">\n      <fieldset>\n        <legend>Dados do Aluno</legend>\n        <div class=\"form-group row\">\n            <div class = \"col-8\">\n            <label for=\"nome\">Nome Completo:</label>\n            <input type=\"text\" size=\"100\" class=\"form-control\" id=\"nome\" aria-describedby=\"nomeHelp\">\n            <small id=\"nomeHelp\" class=\"form-text text-muted\">máximo 100 caracteres.</small>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row\">\n        <div class = \"col-3\">\n        <label for=\"dataNascimento\">Data de nascimento:</label>\n        <input class = \"mr-4 form-control\" id=\"dataNascimento\" type=\"date\" name=\"data_nascimento\" placeholder=\"dd/mm/AAAA\">\n        </div>\n        <div class=\"col-3\">\n        <label for=\"serieIngresso\">Série de ingresso:</label>\n        <select class = \"custom select\">\n          <option value=\"1\">1º Ano</option>\n          <option value=\"2\">2º Ano</option>\n          <option value=\"3\">3º Ano</option>\n          <option value=\"4\">4º Ano</option>\n          <option value=\"5\">5º Ano</option>\n          <option value=\"6\">6º Ano</option>\n          <option value=\"7\">7º Ano</option>\n          <option value=\"8\">8º Ano</option>\n          <option value=\"9\">9º Ano</option>\n          </select>\n          </div>\n          </div>\n      </div>\n    </fieldset>\n      <hr>\n      <fieldset>\n        <legend>Dados da Mãe</legend>\n      <div class=\"form-group\">\n      <div class = \"row\">\n        <div  class=\"col-6\">\n            <label for=\"nomeDaMae\">Nome da mãe:</label>\n            <input class=\"form-control\" type=\"text\" name=\"nomeMae\">\n        </div>\n      </div>\n      </div>\n\n      <div class=\"form-group\">\n      <div class = \"row mt-3\">\n        <div class=\"col-3\">\n          <label for=\"cpfDaMae\">CPF da mãe:</label>\n          <input class = \"mr-4 form-control\" type=\"text\" name=\"cpfMae\" placeholder=\"XXXXXXXXXXX\">\n        </div>\n\n      <div class=\"col-3\">\n         <label for=\"dataPagamento\">Data de pagamento:</label>\n         <input class=\"form-control\" type=\"date\" name=\"dataPagamento\" placeholder=\"dd/mm/AAAA\">\n      </div>\n      </div>\n      </div>\n      </fieldset>\n      <hr>\n\n      <fieldset>\n        <legend>Endereço</legend>\n        <div class = \"row mt-2\">\n          <div class=\"col-8\">\n            <label for=\"rua\">Rua:</label>\n            <input class = \"form-control\" type=\"text\" name=\"rua\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"complemento\">Complemento:</label>\n            <input class = \"form-control\" type=\"text\" name=\"complemento\">\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\">\n            <label for=\"bairro\">Bairro:</label>\n            <input class=\"form-control\" type=\"text\" name=\"bairro\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"cep\">CEP:</label>\n            <input type=\"text\" class=\"form-control\" name=\"cep\">\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-1\">\n            <label for=\"estado\">Estado:</label>\n            <input class=\"mr-2 form-control\" type=\"text\" name=\"estado\">\n          </div>\n          <div class=\"col-6\">\n            <label for=\"cidade\">Cidade:</label>\n            <input class=\"form-control\" type=\"text\" name=\"cidade\">\n          </div>\n        </div>\n      </div>\n      </fieldset>\n\n\n      <div class = \"row mt-3\">\n        <input class = \"btn btn-warning col-12\" type=\"submit\" value=\"Salvar\">\n      </div>\n    </form>\n  </div>\n</div>\n</div>\n"
+module.exports = "<div class = \"container central\">\n<div class=\"card border-warning\">\n  <h5 class=\"card-header\">Editar Aluno</h5>\n  <div class=\"card-body\">\n    <form action=\"/action_page.php\">\n      <fieldset>\n        <legend>Dados do Aluno</legend>\n        <div class=\"form-group row\">\n            <div class = \"col-8\">\n            <label for=\"nome\">Nome Completo:</label>\n            <input type=\"text\" size=\"100\" class=\"form-control\" id=\"nome\" value=\"{{estudante.nome}}\" aria-describedby=\"nomeHelp\">\n            <small id=\"nomeHelp\" class=\"form-text text-muted\">máximo 100 caracteres.</small>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row\">\n        <div class = \"col-3\">\n        <label for=\"dataNascimento\">Data de nascimento:</label>\n        <input class = \"mr-4 form-control\" id=\"dataNascimento\" type=\"date\" value=\"{{estudante.nascimento}}\" name=\"data_nascimento\" placeholder=\"dd/mm/AAAA\">\n        </div>\n        <div class=\"col-3\">\n        <label for=\"serieIngresso\">Série de ingresso:</label>\n        <select name=\"serie_ingresso \"class = \"custom select\" value=\"{{estudante.serie_ingresso}}\">\n          <option value=\"1\">1º Ano</option>\n          <option value=\"2\">2º Ano</option>\n          <option value=\"3\">3º Ano</option>\n          <option value=\"4\">4º Ano</option>\n          <option value=\"5\">5º Ano</option>\n          <option value=\"6\">6º Ano</option>\n          <option value=\"7\">7º Ano</option>\n          <option value=\"8\">8º Ano</option>\n          <option value=\"9\">9º Ano</option>\n          </select>\n          </div>\n          </div>\n      </div>\n    </fieldset>\n      <hr>\n      <fieldset>\n        <legend>Dados da Mãe</legend>\n      <div class=\"form-group\">\n      <div class = \"row\">\n        <div  class=\"col-6\">\n            <label for=\"nomeDaMae\">Nome da mãe:</label>\n            <input class=\"form-control\" type=\"text\" name=\"nomeMae\">\n        </div>\n      </div>\n      </div>\n\n      <div class=\"form-group\">\n      <div class = \"row mt-3\">\n        <div class=\"col-3\">\n          <label for=\"cpfDaMae\">CPF da mãe:</label>\n          <input class = \"mr-4 form-control\" type=\"text\" name=\"cpfMae\" placeholder=\"XXXXXXXXXXX\">\n        </div>\n\n      <div class=\"col-3\">\n         <label for=\"dataPagamento\">Data de pagamento:</label>\n         <input class=\"form-control\" type=\"date\" name=\"dataPagamento\" placeholder=\"dd/mm/AAAA\">\n      </div>\n      </div>\n      </div>\n      </fieldset>\n      <hr>\n\n      <fieldset>\n        <legend>Endereço</legend>\n        <div class = \"row mt-2\">\n          <div class=\"col-8\">\n            <label for=\"rua\">Rua:</label>\n            <input class = \"form-control\" type=\"text\" name=\"rua\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"complemento\">Complemento:</label>\n            <input class = \"form-control\" type=\"text\" name=\"complemento\">\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\">\n            <label for=\"bairro\">Bairro:</label>\n            <input class=\"form-control\" type=\"text\" name=\"bairro\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"cep\">CEP:</label>\n            <input type=\"text\" class=\"form-control\" name=\"cep\">\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-1\">\n            <label for=\"estado\">Estado:</label>\n            <input class=\"mr-2 form-control\" type=\"text\" name=\"estado\">\n          </div>\n          <div class=\"col-6\">\n            <label for=\"cidade\">Cidade:</label>\n            <input class=\"form-control\" type=\"text\" name=\"cidade\">\n          </div>\n        </div>\n      </div>\n      </fieldset>\n\n\n      <div class = \"row mt-3\">\n        <input class = \"btn btn-warning col-12\" type=\"submit\" value=\"Salvar\">\n      </div>\n    </form>\n  </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -314,12 +328,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditarComponent", function() { return EditarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
+
+
 
 
 var EditarComponent = /** @class */ (function () {
-    function EditarComponent() {
+    function EditarComponent(apiServe, route) {
+        this.apiServe = apiServe;
+        this.route = route;
     }
     EditarComponent.prototype.ngOnInit = function () {
+        this.getId();
+    };
+    EditarComponent.prototype.getId = function () {
+        var _this = this;
+        this.id = +this.route.snapshot.paramMap.get('id');
+        this.apiServe.getEstudanteData(this.id)
+            .then(function (estudante) { return _this.estudante = estudante; });
+        console.log(this.estudante);
     };
     EditarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -327,7 +355,7 @@ var EditarComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./editar.component.html */ "./src/app/editar/editar.component.html"),
             styles: [__webpack_require__(/*! ./editar.component.css */ "./src/app/editar/editar.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
     ], EditarComponent);
     return EditarComponent;
 }());
@@ -410,7 +438,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"row container mt-4 ml-4 mb-4\">\n  <div class=\"col-11\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-1\">\n    <a [routerLink]=\"['/cadastrar']\"><i class=\"fas fa-user-plus fa-3x mt-3 text-primary\"></i></a>\n  </div>\n</div>\n\n<div class = \"container mt-5\" *ngFor=\"let estudante of estudantes\">\n<div class = \"row mb-1\" >\n    <div class = \"col-4 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-1\">\n      <form action=\"/estudantes/edit\" method=\"post\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-2 float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-1\">\n      <form action=\"/estudantes/delete\" method=\"post\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-danger mr-2 float-right\">Deletar</button>\n      </form>\n    </div>\n</div>\n<hr>\n</div>\n"
+module.exports = "<div class = \"row container mt-4 ml-4 mb-4\">\n  <div class=\"col-11\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-1\">\n    <a [routerLink]=\"['/cadastrar']\"><i class=\"fas fa-user-plus fa-3x mt-3 text-primary\"></i></a>\n  </div>\n</div>\n\n<div class = \"container mt-5\" *ngFor=\"let estudante of estudantes\">\n<div class = \"row mb-1\" >\n    <div class = \"col-4 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-1\">\n      <form [routerLink]=\"['editar',estudante.id]\" method=\"get\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-2 float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-1\">\n      <form action=\"estudantes\" method=\"post\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-danger mr-2 float-right\">Deletar</button>\n      </form>\n    </div>\n</div>\n<hr>\n</div>\n"
 
 /***/ }),
 
