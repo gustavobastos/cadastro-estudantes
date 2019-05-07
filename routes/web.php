@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('angular');
 });
 
+Route::get('/alunos', function () {
+    return view('angular');
+})->name('alunos');
 
 
 Route::resource('estudantes','EstudantesController');
@@ -22,3 +25,5 @@ Route::post('estudantes/delete/','EstudantesController@delete');
 Route::get('estudantes/estudante/{id}','EstudantesController@estudante');
 Route::get('estudantes/endereco/{id}','EstudantesController@endereco');
 Route::get('estudantes/mae/{id}','EstudantesController@mae');
+Route::post('estudantes/update','EstudantesController@update');
+Route::post('estudantes/cadastra','EstudantesController@cadastra');

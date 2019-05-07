@@ -33,9 +33,9 @@ class EstudantesController extends Controller
 
     public function endereco($id)
     {
-      $query = DB::table('endereco');
+      $query = DB::table('enderecos');
       $query->select('*');
-      $query->where('id', '=', $id);
+      $query->where('estudante', '=', $id);
 
       $rows = $query->get()->toArray();
       return json_encode($rows[0]);
@@ -49,17 +49,10 @@ class EstudantesController extends Controller
      */
     public function mae($id)
     {
-      $query = DB::table('estudantes');
-      $query->select('mae');
-      $query->where('id', '=', $id);
-
-      $rows = $query->get()->toArray();
-      $mae =  $rows[0]->mae;
-
 
       $query = DB::table('maes');
       $query->select('*');
-      $query->where('cpf', '=', $mae);
+      $query->where('estudante', '=', $id);
 
       $rows = $query->get()->toArray();
 
@@ -83,18 +76,25 @@ class EstudantesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function cadastra(Request $request)
     {
         //
         //return \App\Estudante::create($request->all());
         // Insert
 
+        DB::table('estudantes')->insert(['nome' => $request->nome,
+        'nascimento' => $request->nascimento, 'serie_ingresso' => $request->serie_ingresso]);
+
+        $id = DB::table('estudantes')->max('id');
+
+
         DB::table('enderecos')->insert(['estudante' => $request->estudante,
-        'cep' => $request->cep, 'rua'=>$request->rua, 'numero'=>$request->numero, 'complemento' => $request->complemento, 'bairro' => $request->bairro, 'cidade' => $request->cidade, 'estado' => $request->estado]);
+        'cep' => $request->cep, 'rua'=>$request->rua, 'numero'=>$request->numero, 'complemento' => $request->complemento, 'bairro' => $request->bairro, 'cidade' => $request->cidade, 'estado' => $request->estado, 'estudante' => $id]);
 
-        DB::table('maes')->insert(['nome' => $request->nomeMae,'cpf' => $request->cpfMae, 'data_pagamento'=>$request->dataPagamento]);
 
-        return $request->all();
+        DB::table('maes')->insert(['nome' => $request->nomeMae,'cpf' => $request->cpf, 'data_pagamento'=>$request->data_pagamento, 'estudante' => $id]);
+
+        return redirect()->route('alunos', ['cod' => "sucess"]);
     }
 
     /**
@@ -117,9 +117,34 @@ class EstudantesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+      DB::table('estudantes')
+          ->where('id', $request->id)
+          ->update(['nome' => $request->nome],
+          ['nascimento' => $request->nascimento],
+          ['serie_ingresso' => $request->serie_ingresso]
+          );
+
+          DB::table('enderecos')
+              ->where('estudante',$request->id)
+              ->update(['cep' => $request->cep],
+                ['rua' => $request->rua],
+              ['numero' => $request->numero],
+              ['complemento' => $request->complemento],
+              ['bairro' => $request->bairro],
+              ['cidade' => $request->cidade],
+              ['estado' => $request->estado]
+              );
+
+              DB::table('maes')
+                  ->where('estudante', $request->id)
+                  ->update(['nome' => $request->nomeMae],
+                  ['cpf' => $request->cpf],
+                  ['data_pagamento' => $request->data_pagamento]
+                  );
+
+                  return redirect()->route('alunos', ['cod' => "sucess"]);
     }
 
     /**
@@ -132,6 +157,6 @@ class EstudantesController extends Controller
     {
 
           DB::table('estudantes')->delete(["$request->id"]);
-          return "sucesso";
+          return redirect()->route('alunos', ['cod' => "sucess"]);
     }
 }
