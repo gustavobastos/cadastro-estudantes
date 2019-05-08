@@ -124,32 +124,33 @@ class EstudantesController extends Controller
      */
     public function update(Request $request)
     {
+
       DB::table('estudantes')
           ->where('id', $request->id)
-          ->update(['nome' => $request->nome],
-          ['nascimento' => $request->nascimento],
-          ['serie_ingresso' => $request->serie_ingresso]
+          ->update(['nome' => $request->nome,
+          'nascimento' => $request->nascimento,
+          'serie_ingresso' => $request->serie_ingresso]
           );
 
-          DB::table('enderecos')
-              ->where('estudante',$request->id)
-              ->update(['cep' => $request->cep],
-                ['rua' => $request->rua],
-              ['numero' => $request->numero],
-              ['complemento' => $request->complemento],
-              ['bairro' => $request->bairro],
-              ['cidade' => $request->cidade],
-              ['estado' => $request->estado]
+      DB::table('enderecos')
+              ->where('estudante', $request->id)
+              ->update(['estado' => $request->estado,
+              'cidade' => $request->cidade,
+              'cep' => $request->cep,
+              'rua' => $request->rua,
+              'numero' => $request->numero,
+              'complemento' => $request->complemento,
+              'bairro' => $request->bairro
+            ]);
+
+      DB::table('maes')
+              ->where('estudante', $request->id)
+              ->update(['nome' => $request->nomeMae,
+              'cpf' => $request->cpf,
+              'data_pagamento' => $request->data_pagamento]
               );
 
-              DB::table('maes')
-                  ->where('estudante', $request->id)
-                  ->update(['nome' => $request->nomeMae],
-                  ['cpf' => $request->cpf],
-                  ['data_pagamento' => $request->data_pagamento]
-                  );
-
-                  return redirect()->route('alunos', ['cod' => "sucess"]);
+              return redirect()->route('alunos', ['cod' => "sucess"]);
     }
 
     /**

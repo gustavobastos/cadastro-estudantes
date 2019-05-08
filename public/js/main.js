@@ -440,11 +440,9 @@ var EditarComponent = /** @class */ (function () {
             .then(function (estados) { return _this.estados = estados; });
     };
     EditarComponent.prototype.onBlurMethod = function (event) {
-        console.log("chegou");
         var cpf;
         cpf = event.target.value;
         if (cpf == null) {
-            console.log("chegou");
             return false;
         }
         if (cpf.length != 11) {
