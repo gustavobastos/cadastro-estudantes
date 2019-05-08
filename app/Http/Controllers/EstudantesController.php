@@ -76,6 +76,29 @@ class EstudantesController extends Controller
 
     }
 
+    public function cep($cep)
+    {
+      try{
+        $statusCode = 400;
+        $endpoint = "https://viacep.com.br/ws/$cep/json/";
+
+        $client = new \GuzzleHttp\Client();
+
+
+        $response = $client->request('GET', $endpoint);
+
+        $statusCode = $response->getStatusCode();
+        $content = $response->getBody();
+      }
+
+      finally{
+      if($statusCode == 400)
+        return "vazio";
+      }
+
+      return $content;
+    }
+
     public function cidades($codigo)
     {
 

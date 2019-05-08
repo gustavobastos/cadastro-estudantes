@@ -66,7 +66,6 @@ var ApiService = /** @class */ (function () {
                             .toPromise()];
                     case 1:
                         response = _a.sent();
-                        console.log(response.json());
                         return [2 /*return*/, (response.json())];
                 }
             });
@@ -114,30 +113,15 @@ var ApiService = /** @class */ (function () {
             });
         });
     };
-    ApiService.prototype.getEstados = function () {
+    ApiService.prototype.getCep = function (cep) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var response;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.http.get('/estados')
+                    case 0: return [4 /*yield*/, this.http.get('/cep/' + cep)
                             .toPromise()];
                     case 1:
                         response = _a.sent();
-                        return [2 /*return*/, (response.json())];
-                }
-            });
-        });
-    };
-    ApiService.prototype.getCidades = function (codigo) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var response;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.http.get('/cidades/' + codigo)
-                            .toPromise()];
-                    case 1:
-                        response = _a.sent();
-                        console.log(response.json());
                         return [2 /*return*/, (response.json())];
                 }
             });
@@ -349,7 +333,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container central\">\n<div class=\"card border-primary\">\n  <h5 class=\"card-header\">Cadastrar Aluno</h5>\n  <div class=\"card-body\">\n    <form action=\"/estudantes/cadastra\" method=\"post\">\n      <fieldset>\n        <legend>Dados do Aluno</legend>\n        <div class=\"form-group row\">\n            <div class = \"col-8\">\n            <label for=\"nome\">Nome Completo:</label>\n            <input type=\"text\" size=\"100\" maxlength=\"100\" class=\"form-control\" id=\"nome\" name=\"nome\" aria-describedby=\"nomeHelp\">\n            <small id=\"nomeHelp\" class=\"form-text text-muted\">máximo 100 caracteres.</small>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row\">\n        <div class = \"col-3\">\n        <label for=\"dataNascimento\">Data de nascimento:</label>\n        <input class = \"mr-4 form-control\" id=\"dataNascimento\" type=\"date\" name=\"nascimento\" placeholder=\"dd/mm/AAAA\">\n        </div>\n        <div class=\"col-3\">\n        <label for=\"serieIngresso\">Série de ingresso:</label>\n        <select name=\"serie_ingresso\" class = \"custom select\">\n          <option value=\"1\">1º Ano</option>\n          <option value=\"2\">2º Ano</option>\n          <option value=\"3\">3º Ano</option>\n          <option value=\"4\">4º Ano</option>\n          <option value=\"5\">5º Ano</option>\n          <option value=\"6\">6º Ano</option>\n          <option value=\"7\">7º Ano</option>\n          <option value=\"8\">8º Ano</option>\n          <option value=\"9\">9º Ano</option>\n          </select>\n          </div>\n          </div>\n      </div>\n    </fieldset>\n      <hr>\n      <fieldset>\n        <legend>Dados da Mãe</legend>\n      <div class=\"form-group\">\n      <div class = \"row\">\n        <div  class=\"col-6\">\n            <label for=\"nomeDaMae\">Nome da mãe:</label>\n            <input class=\"form-control\" type=\"text\" name=\"nomeMae\" maxlength=\"100\">\n        </div>\n      </div>\n      </div>\n\n      <div class=\"form-group\">\n      <div class = \"row mt-3\">\n        <div class=\"col-3\">\n          <label for=\"cpfDaMae\">CPF da mãe:</label>\n          <input class = \"mr-4 form-control\" type=\"text\" id=\"cpfdaMae\"  name=\"cpf\" placeholder=\"XXXXXXXXXXX\">\n        </div>\n\n      <div class=\"col-3\">\n         <label for=\"dataPagamento\">Data de pagamento:</label>\n         <input class=\"form-control\" type=\"date\" name=\"data_pagamento\" placeholder=\"dd/mm/AAAA\">\n      </div>\n      </div>\n      </div>\n      </fieldset>\n      <hr>\n\n      <fieldset>\n        <legend>Endereço</legend>\n        <div class = \"row mt-2\">\n          <div class=\"col-6\">\n            <label for=\"rua\">Rua:</label>\n            <input class = \"form-control\" type=\"text\" name=\"rua\" maxlength=\"120\">\n          </div>\n          <div class=\"col-2\">\n            <label for=\"numero\">Número:</label>\n            <input class = \"form-control\" type=\"number\" id=\"numero\" size=\"20\" name=\"numero\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"complemento\">Complemento:</label>\n            <input class = \"form-control\" type=\"text\" name=\"complemento\" maxlength=\"50\">\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\">\n            <label for=\"bairro\">Bairro:</label>\n            <input class=\"form-control\" type=\"text\" name=\"bairro\" maxlength=\"100\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"cep\">CEP:</label>\n            <input type=\"text\" class=\"form-control\" name=\"cep\">\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\" >\n            <label for=\"estado\">Estado:</label>\n            <select name=\"estado\"  (change)=\"onChangeMethod($event)\" id=\"estado\">\n            <option *ngFor=\"let estado of estados\" value=\"{{estado.sigla}}\">{{estado.sigla}}</option>\n            </select>\n          </div>\n          <div class=\"col-6 ml-5\">\n            <label for=\"cidade\">Cidade:</label>\n            <select name=\"cidade\"  id=\"cidade\" >\n            <option *ngFor=\"let cidade of cidades\" value=\"{{cidade.nome}}\">{{cidade.nome}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n      </fieldset>\n\n\n      <div class = \"row mt-3\">\n        <input class = \"btn btn-primary col-12\" type=\"submit\" value=\"Cadastrar\">\n      </div>\n    </form>\n  </div>\n</div>\n</div>\n"
+module.exports = "<div class = \"container central\">\n<div class=\"card border-primary\">\n  <h5 class=\"card-header\">Cadastrar Aluno</h5>\n  <div class=\"card-body\">\n    <form action=\"/estudantes/cadastra\" method=\"post\">\n      <fieldset>\n        <legend>Dados do Aluno</legend>\n        <div class=\"form-group row\">\n            <div class = \"col-8\">\n            <label for=\"nome\">Nome Completo:</label>\n            <input type=\"text\" size=\"100\" maxlength=\"100\" class=\"form-control\" id=\"nome\" name=\"nome\" aria-describedby=\"nomeHelp\">\n            <small id=\"nomeHelp\" class=\"form-text text-muted\">máximo 100 caracteres.</small>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row\">\n        <div class = \"col-3\">\n        <label for=\"dataNascimento\">Data de nascimento:</label>\n        <input class = \"mr-4 form-control\" id=\"dataNascimento\" type=\"date\" name=\"nascimento\" placeholder=\"dd/mm/AAAA\">\n        </div>\n        <div class=\"col-3\">\n        <label for=\"serieIngresso\">Série de ingresso:</label>\n        <select name=\"serie_ingresso\" class = \"custom select\">\n          <option value=\"1\">1º Ano</option>\n          <option value=\"2\">2º Ano</option>\n          <option value=\"3\">3º Ano</option>\n          <option value=\"4\">4º Ano</option>\n          <option value=\"5\">5º Ano</option>\n          <option value=\"6\">6º Ano</option>\n          <option value=\"7\">7º Ano</option>\n          <option value=\"8\">8º Ano</option>\n          <option value=\"9\">9º Ano</option>\n          </select>\n          </div>\n          </div>\n      </div>\n    </fieldset>\n      <hr>\n      <fieldset>\n        <legend>Dados da Mãe</legend>\n      <div class=\"form-group\">\n      <div class = \"row\">\n        <div  class=\"col-6\">\n            <label for=\"nomeDaMae\">Nome da mãe:</label>\n            <input class=\"form-control\" type=\"text\" name=\"nomeMae\" maxlength=\"100\">\n        </div>\n      </div>\n      </div>\n\n      <div class=\"form-group\">\n      <div class = \"row mt-3\">\n        <div class=\"col-3\">\n          <label for=\"cpfDaMae\">CPF da mãe:</label>\n          <input class = \"mr-4 form-control\" type=\"text\" id=\"cpfdaMae\"  name=\"cpf\" placeholder=\"XXXXXXXXXXX\">\n        </div>\n\n      <div class=\"col-3\">\n         <label for=\"dataPagamento\">Data de pagamento:</label>\n         <input class=\"form-control\" type=\"date\" name=\"data_pagamento\" placeholder=\"dd/mm/AAAA\">\n      </div>\n      </div>\n      </div>\n      </fieldset>\n      <hr>\n\n      <fieldset>\n        <legend>Endereço</legend>\n        <div class = \"row mt-2\">\n          <div class=\"col-6\">\n            <label for=\"rua\">Rua:</label>\n            <input class = \"form-control\" type=\"text\" name=\"rua\" maxlength=\"120\">\n          </div>\n          <div class=\"col-2\">\n            <label for=\"numero\">Número:</label>\n            <input class = \"form-control\" type=\"number\" id=\"numero\" size=\"20\" name=\"numero\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"complemento\">Complemento:</label>\n            <input class = \"form-control\" type=\"text\" name=\"complemento\" maxlength=\"50\">\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\">\n            <label for=\"bairro\">Bairro:</label>\n            <input class=\"form-control\" type=\"text\" name=\"bairro\" maxlength=\"100\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"cep\">CEP:</label>\n            <input type=\"text\" maxlength=\"8\" class=\"form-control\" name=\"cep\">\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\" >\n            <label for=\"estado\">Estado:</label>\n            <input type=\"text\" size=\"3\" name=\"estado\"  id=\"estado\" readonly value=\"{{cep.uf}}\">\n          </div>\n          <div class=\"col-6 ml-5\">\n            <label for=\"cidade\">Cidade:</label>\n            <input type=\"text\" size=\"30\" name=\"cidade\"  id=\"cidade\" readyonly value=\"{{cep.localidade}}\">\n          </div>\n        </div>\n      </div>\n      </fieldset>\n\n\n      <div class = \"row mt-3\">\n        <input class = \"btn btn-primary col-12\" type=\"submit\" value=\"Cadastrar\">\n      </div>\n    </form>\n  </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -372,26 +356,83 @@ __webpack_require__.r(__webpack_exports__);
 var CadastrarComponent = /** @class */ (function () {
     function CadastrarComponent(apiServe) {
         this.apiServe = apiServe;
-        this.title = 'Cadastrar Aluno';
     }
     CadastrarComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.apiServe.getEstados()
-            .then(function (estados) { return _this.estados = estados; });
-        this.apiServe.getCidades(12)
-            .then(function (cidades) { return _this.cidades = cidades; });
     };
-    CadastrarComponent.prototype.onChangeMethod = function (event) {
-        var _this = this;
-        for (var _i = 0, _a = this.estados; _i < _a.length; _i++) {
-            var estado = _a[_i];
-            if (estado['sigla'] == event.target.value) {
-                this.estadoAtual = estado['codigo_ibge'];
-                break;
-            }
+    CadastrarComponent.prototype.onBlurCpf = function (event) {
+        var cpf;
+        cpf = event.target.value;
+        if (cpf == null) {
+            this.cpfValido = false;
+            return false;
         }
-        this.apiServe.getCidades(this.estadoAtual)
-            .then(function (cidades) { return _this.cidades = cidades; });
+        if (cpf.length != 11) {
+            this.cpfValido = false;
+            return false;
+        }
+        if ((cpf == '00000000000') || (cpf == '11111111111') || (cpf == '22222222222') || (cpf == '33333333333') || (cpf == '44444444444') || (cpf == '55555555555') || (cpf == '66666666666') || (cpf == '77777777777') || (cpf == '88888888888') || (cpf == '99999999999')) {
+            return false;
+        }
+        var numero = 0;
+        var caracter = '';
+        var numeros = '0123456789';
+        var j = 10;
+        var somatorio = 0;
+        var resto = 0;
+        var digito1 = 0;
+        var digito2 = 0;
+        var cpfAux = '';
+        cpfAux = cpf.substring(0, 9);
+        for (var i = 0; i < 9; i++) {
+            caracter = cpfAux.charAt(i);
+            if (numeros.search(caracter) == -1) {
+                this.cpfValido = false;
+                return false;
+            }
+            numero = Number(caracter);
+            somatorio = somatorio + (numero * j);
+            j--;
+        }
+        resto = somatorio % 11;
+        digito1 = 11 - resto;
+        if (digito1 > 9) {
+            digito1 = 0;
+        }
+        j = 11;
+        somatorio = 0;
+        cpfAux = cpfAux + digito1;
+        for (var i = 0; i < 10; i++) {
+            caracter = cpfAux.charAt(i);
+            numero = Number(caracter);
+            somatorio = somatorio + (numero * j);
+            j--;
+        }
+        resto = somatorio % 11;
+        digito2 = 11 - resto;
+        if (digito2 > 9) {
+            digito2 = 0;
+        }
+        cpfAux = cpfAux + digito2;
+        if (cpf != cpfAux) {
+            this.cpfValido = false;
+            return false;
+        }
+        else {
+            this.cpfValido = true;
+            return true;
+        }
+    };
+    CadastrarComponent.prototype.onBlurCep = function (event) {
+        var _this = this;
+        this.cep = "";
+        this.apiServe.getCep(event.target.value)
+            .then(function (cep) { return _this.cep = cep; });
+        this.cepValido = true;
+        console.log(this.cep);
+        if (this.cep == "") {
+            this.cepValido = false;
+            this.cep = "{uf: ' ', 'localidade':' '}";
+        }
     };
     CadastrarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -426,7 +467,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container central\">\n<div class=\"card border-warning\">\n  <h5 class=\"card-header\">Editar Aluno</h5>\n  <div class=\"card-body\">\n    <form action=\"/estudantes/update\" method=\"post\">\n      <fieldset>\n        <legend>Dados do Aluno</legend>\n        <div class=\"form-group row\">\n            <div class = \"col-8\">\n            <label for=\"nome\">Nome Completo:</label>\n            <input type=\"text\" size=\"100\" maxlength=\"100\" class=\"form-control\" id=\"nome\" name=\"nome\" value=\"{{estudante.nome}}\" aria-describedby=\"nomeHelp\">\n            <small id=\"nomeHelp\" class=\"form-text text-muted\">máximo 100 caracteres.</small>\n            <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row\">\n        <div class = \"col-3\">\n        <label for=\"dataNascimento\">Data de nascimento:</label>\n        <input class = \"mr-4 form-control\" id=\"dataNascimento\" type=\"date\" value=\"{{estudante.nascimento}}\" name=\"nascimento\" placeholder=\"dd/mm/AAAA\">\n        </div>\n        <div class=\"col-3\">\n        <label for=\"serieIngresso\">Série de ingresso:</label>\n        <select name=\"serie_ingresso\" class = \"custom select\" value=\"{{estudante.serie_ingresso}}\">\n          <option value=\"1\">1º Ano</option>\n          <option value=\"2\">2º Ano</option>\n          <option value=\"3\">3º Ano</option>\n          <option value=\"4\">4º Ano</option>\n          <option value=\"5\">5º Ano</option>\n          <option value=\"6\">6º Ano</option>\n          <option value=\"7\">7º Ano</option>\n          <option value=\"8\">8º Ano</option>\n          <option value=\"9\">9º Ano</option>\n          </select>\n          </div>\n          </div>\n      </div>\n    </fieldset>\n      <hr>\n      <fieldset>\n        <legend>Dados da Mãe</legend>\n      <div class=\"form-group\">\n      <div class = \"row\">\n        <div  class=\"col-6\">\n            <label for=\"nomeDaMae\">Nome da mãe:</label>\n            <input class=\"form-control\" maxlength=\"100\" type=\"text\" value=\"{{mae.nome}}\" name=\"nomeMae\">\n        </div>\n      </div>\n      </div>\n\n      <div class=\"form-group\">\n      <div class = \"row mt-3\">\n        <div class=\"col-3\">\n          <label for=\"cpfDaMae\">CPF da mãe:</label>\n          <input class = \"mr-4 form-control\" type=\"text\" id=\"cpfMae\" (blur)=\"onBlurMethod($event)\" value=\"{{mae.cpf}}\"name=\"cpf\" placeholder=\"XXXXXXXXXXX\">\n        </div>\n\n      <div class=\"col-3\">\n         <label for=\"dataPagamento\">Data de pagamento:</label>\n         <input class=\"form-control\" type=\"date\" id=\"datPagamento\" name=\"data_pagamento\" value=\"{{mae.data_pagamento}}\" placeholder=\"dd/mm/AAAA\">\n      </div>\n      </div>\n      </div>\n      </fieldset>\n      <hr>\n\n      <fieldset>\n        <legend>Endereço</legend>\n        <div class = \"row mt-2\">\n          <div class=\"col-6\">\n            <label for=\"rua\">Rua:</label>\n            <input class = \"form-control\" type=\"text\" value=\"{{endereco.rua}}\" maxlength=\"120\" name=\"rua\">\n          </div>\n          <div class=\"col-2\">\n            <label for=\"numero\">Número:</label>\n            <input class = \"form-control\" type=\"number\" id=\"numero\" value=\"{{endereco.numero}}\" name=\"numero\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"complemento\">Complemento:</label>\n            <input class = \"form-control\" value=\"{{endereco.complemento}}\" maxlength=\"50\" id=\"complemento\" type=\"text\" name=\"complemento\">\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\">\n            <label for=\"bairro\">Bairro:</label>\n            <input class=\"form-control\" value=\"{{endereco.bairro}}\" maxlength=\"100\" type=\"text\" name=\"bairro\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"cep\">CEP:</label>\n            <input type=\"text\" value=\"{{endereco.cep}}\" class=\"form-control\" name=\"cep\">\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\" >\n            <label for=\"estado\">Estado:</label>\n            <select name=\"estado\"  (change)=\"onChangeMethod($event)\" id=\"estado\" value=\"{{endereco.estado}}\">\n            <option *ngFor=\"let estado of estados\" value=\"{{estado.sigla}}\">{{estado.sigla}}</option>\n            </select>\n          </div>\n          <div class=\"col-6 ml-5\">\n            <label for=\"cidade\">Cidade:</label>\n            <select name=\"cidade\"  id=\"cidade\" value=\"{{endereco.cidade}}\">\n            <option *ngFor=\"let cidade of cidades\" value=\"{{cidade.nome}}\">{{cidade.nome}}</option>\n            </select>\n          </div>\n        </div>\n      </div>\n      </fieldset>\n\n\n      <div class = \"row mt-3\">\n        <input class = \"btn btn-warning col-12\" type=\"submit\" value=\"Salvar\">\n      </div>\n    </form>\n  </div>\n</div>\n</div>\n"
+module.exports = "<div class = \"container central\">\n<div class=\"card border-warning\">\n  <h5 class=\"card-header\">Editar Aluno</h5>\n  <div class=\"card-body\">\n    <form action=\"/estudantes/update\" method=\"post\">\n      <fieldset>\n        <legend>Dados do Aluno</legend>\n        <div class=\"form-group row\">\n            <div class = \"col-8\">\n            <label for=\"nome\">Nome Completo:</label>\n            <input type=\"text\" size=\"100\" maxlength=\"100\" class=\"form-control\" id=\"nome\" name=\"nome\" value=\"{{estudante.nome}}\" aria-describedby=\"nomeHelp\">\n            <small id=\"nomeHelp\" class=\"form-text text-muted\">máximo 100 caracteres.</small>\n            <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row\">\n        <div class = \"col-3\">\n        <label for=\"dataNascimento\">Data de nascimento:</label>\n        <input class = \"mr-4 form-control\" id=\"dataNascimento\" type=\"date\" value=\"{{estudante.nascimento}}\" name=\"nascimento\" placeholder=\"dd/mm/AAAA\">\n        </div>\n        <div class=\"col-3\">\n        <label for=\"serieIngresso\">Série de ingresso:</label>\n        <select name=\"serie_ingresso\" class = \"custom select\" value=\"{{estudante.serie_ingresso}}\">\n          <option value=\"1\">1º Ano</option>\n          <option value=\"2\">2º Ano</option>\n          <option value=\"3\">3º Ano</option>\n          <option value=\"4\">4º Ano</option>\n          <option value=\"5\">5º Ano</option>\n          <option value=\"6\">6º Ano</option>\n          <option value=\"7\">7º Ano</option>\n          <option value=\"8\">8º Ano</option>\n          <option value=\"9\">9º Ano</option>\n          </select>\n          </div>\n          </div>\n      </div>\n    </fieldset>\n      <hr>\n      <fieldset>\n        <legend>Dados da Mãe</legend>\n      <div class=\"form-group\">\n      <div class = \"row\">\n        <div  class=\"col-6\">\n            <label for=\"nomeDaMae\">Nome da mãe:</label>\n            <input class=\"form-control\" maxlength=\"100\" type=\"text\" value=\"{{mae.nome}}\" name=\"nomeMae\">\n        </div>\n      </div>\n      </div>\n\n      <div class=\"form-group\">\n      <div class = \"row mt-3\">\n        <div class=\"col-3\">\n          <label for=\"cpfDaMae\">CPF da mãe:</label>\n          <input class = \"mr-4 form-control\" type=\"text\" id=\"cpfMae\" (blur)=\"onBlurMethod($event)\" value=\"{{mae.cpf}}\"name=\"cpf\" placeholder=\"XXXXXXXXXXX\">\n        </div>\n\n      <div class=\"col-3\">\n         <label for=\"dataPagamento\">Data de pagamento:</label>\n         <input class=\"form-control\" type=\"date\" id=\"datPagamento\" name=\"data_pagamento\" value=\"{{mae.data_pagamento}}\" placeholder=\"dd/mm/AAAA\">\n      </div>\n      </div>\n      </div>\n      </fieldset>\n      <hr>\n\n      <fieldset>\n        <legend>Endereço</legend>\n        <div class = \"row mt-2\">\n          <div class=\"col-6\">\n            <label for=\"rua\">Rua:</label>\n            <input class = \"form-control\" type=\"text\" value=\"{{endereco.rua}}\" maxlength=\"120\" name=\"rua\">\n          </div>\n          <div class=\"col-2\">\n            <label for=\"numero\">Número:</label>\n            <input class = \"form-control\" type=\"number\" id=\"numero\" value=\"{{endereco.numero}}\" name=\"numero\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"complemento\">Complemento:</label>\n            <input class = \"form-control\" value=\"{{endereco.complemento}}\" maxlength=\"50\" id=\"complemento\" type=\"text\" name=\"complemento\">\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\">\n            <label for=\"bairro\">Bairro:</label>\n            <input class=\"form-control\" value=\"{{endereco.bairro}}\" maxlength=\"100\" type=\"text\" name=\"bairro\">\n          </div>\n          <div class=\"col-4\">\n            <label for=\"cep\">CEP:</label>\n            <input type=\"text\" (blur)=\"onBlurCep($event)\" maxlength=\"8\" value=\"{{endereco.cep}}\" class=\"form-control\" name=\"cep\">\n          </div>\n        </div>\n      </div>\n\n      <div class=\"form-group\">\n        <div class = \"row mt-2\">\n          <div class=\"col-4\" >\n            <label for=\"estado\">Estado:</label>\n            <input class=\"form-control-sm\" *ngIf =\"[cep] == ''\" type=\"text\" size=\"3\" name=\"estado\"  id=\"estado\" readonly value=\"{{endereco.estado}}\">\n            <input class=\"form-control-sm\" *ngIf =\"[cep] != ''\"type=\"text\" size=\"3\" name=\"estado\"  id=\"estado\" readonly value=\"{{cep.uf}}\">\n          </div>\n          <div class=\"col-6 ml-5\">\n            <label for=\"cidade\">Cidade:</label>\n            <input class=\"form-control\" *ngIf =\"[cep] == ''\" type=\"text\" size=\"30\" name=\"cidade\"  id=\"cidade\" readonly value=\"{{endereco.cidade}}\">\n            <input class=\"form-control\" *ngIf =\"[cep] != ''\" type=\"text\" size=\"30\" name=\"cidade\"  id=\"cidade\" readonly value=\"{{cep.localidade}}\">\n          </div>\n        </div>\n      </div>\n      </fieldset>\n\n\n      <div class = \"row mt-3\">\n        <input class = \"btn btn-warning col-12\" type=\"submit\" value=\"Salvar\">\n      </div>\n    </form>\n  </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -452,6 +493,9 @@ var EditarComponent = /** @class */ (function () {
     function EditarComponent(apiServe, route) {
         this.apiServe = apiServe;
         this.route = route;
+        this.cepValido = false;
+        this.cpfValido = false;
+        this.cep = "";
     }
     EditarComponent.prototype.ngOnInit = function () {
         this.getId();
@@ -465,18 +509,16 @@ var EditarComponent = /** @class */ (function () {
             .then(function (endereco) { return _this.endereco = endereco; });
         this.apiServe.getMaeData(this.id)
             .then(function (mae) { return _this.mae = mae; });
-        this.apiServe.getEstados()
-            .then(function (estados) { return _this.estados = estados; });
-        this.apiServe.getCidades(12)
-            .then(function (cidades) { return _this.cidades = cidades; });
     };
-    EditarComponent.prototype.onBlurMethod = function (event) {
+    EditarComponent.prototype.onBlurCpf = function (event) {
         var cpf;
         cpf = event.target.value;
         if (cpf == null) {
+            this.cpfValido = false;
             return false;
         }
         if (cpf.length != 11) {
+            this.cpfValido = false;
             return false;
         }
         if ((cpf == '00000000000') || (cpf == '11111111111') || (cpf == '22222222222') || (cpf == '33333333333') || (cpf == '44444444444') || (cpf == '55555555555') || (cpf == '66666666666') || (cpf == '77777777777') || (cpf == '88888888888') || (cpf == '99999999999')) {
@@ -495,6 +537,7 @@ var EditarComponent = /** @class */ (function () {
         for (var i = 0; i < 9; i++) {
             caracter = cpfAux.charAt(i);
             if (numeros.search(caracter) == -1) {
+                this.cpfValido = false;
                 return false;
             }
             numero = Number(caracter);
@@ -522,25 +565,28 @@ var EditarComponent = /** @class */ (function () {
         }
         cpfAux = cpfAux + digito2;
         if (cpf != cpfAux) {
-            console.log("false");
+            this.cpfValido = false;
             return false;
         }
         else {
-            console.log("true");
+            this.cpfValido = true;
             return true;
         }
     };
-    EditarComponent.prototype.onChangeMethod = function (event) {
+    EditarComponent.prototype.onBlurCep = function (event) {
         var _this = this;
-        for (var _i = 0, _a = this.estados; _i < _a.length; _i++) {
-            var estado = _a[_i];
-            if (estado['sigla'] == event.target.value) {
-                this.estadoAtual = estado['codigo_ibge'];
-                break;
-            }
+        this.cep = "";
+        this.apiServe.getCep(event.target.value)
+            .then(function (cep) { return _this.cep = cep; });
+        this.cepValido = true;
+        console.log(this.cep);
+        if (this.cep == "") {
+            this.cepValido = false;
+            this.cep = "{uf: ' ', 'localidade':' '}";
         }
-        this.apiServe.getCidades(this.estadoAtual)
-            .then(function (cidades) { return _this.cidades = cidades; });
+    };
+    EditarComponent.prototype.loadCep = function () {
+        console.log("aqui");
     };
     EditarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
