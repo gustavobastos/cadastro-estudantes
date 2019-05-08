@@ -67,13 +67,33 @@ class EstudantesController extends Controller
     {
 
       $query = DB::table('estados');
-      $query->select('sigla');
+      $query->select('sigla','codigo_ibge');
 
 
       $rows = $query->get()->toArray();
 
       return json_encode($rows);
 
+    }
+
+    public function cidades($codigo)
+    {
+
+      $endpoint = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/$codigo/municipios";
+      $client = new \GuzzleHttp\Client();
+
+
+      $response = $client->request('GET', $endpoint);
+
+      // url will be: http://my.domain.com/test.php?key1=5&key2=ABC;
+
+      //$statusCode = $response->getStatusCode();
+      //$content = $response->getBody();
+
+      // or when your server returns json
+      $content = $response->getBody();
+      //echo get_remote_data('https://servicodados.ibge.gov.br/api/v1/localidades/estados/'.$codigo.'/municipios');
+      return $content;
     }
 
 
@@ -101,18 +121,6 @@ class EstudantesController extends Controller
 
         return redirect()->route('alunos', ['cod' => "sucess"]);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
 
 
     /**

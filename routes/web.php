@@ -23,6 +23,7 @@ Route::get('/alunos', function () {
 Route::resource('estudantes','EstudantesController');
 Route::post('estudantes/delete/','EstudantesController@delete');
 Route::get('estados','EstudantesController@estados');
+Route::get('cidades/{id}','EstudantesController@cidades');
 Route::get('estudantes/estudante/{id}','EstudantesController@estudante');
 Route::get('estudantes/endereco/{id}','EstudantesController@endereco');
 Route::get('estudantes/mae/{id}','EstudantesController@mae');
