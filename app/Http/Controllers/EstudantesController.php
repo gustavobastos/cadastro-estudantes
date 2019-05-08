@@ -61,14 +61,21 @@ class EstudantesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function estados()
     {
-        //
+
+      $query = DB::table('estados');
+      $query->select('sigla');
+
+
+      $rows = $query->get()->toArray();
+
+      return json_encode($rows);
+
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -78,9 +85,7 @@ class EstudantesController extends Controller
      */
     public function cadastra(Request $request)
     {
-        //
-        //return \App\Estudante::create($request->all());
-        // Insert
+
 
         DB::table('estudantes')->insert(['nome' => $request->nome,
         'nascimento' => $request->nascimento, 'serie_ingresso' => $request->serie_ingresso]);
@@ -159,4 +164,5 @@ class EstudantesController extends Controller
           DB::table('estudantes')->delete([$id]);
           return redirect()->route('alunos', ['cod' => "sucess"]);
     }
+
 }
