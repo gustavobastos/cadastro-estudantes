@@ -108,14 +108,9 @@ class EstudantesController extends Controller
 
       $response = $client->request('GET', $endpoint);
 
-      // url will be: http://my.domain.com/test.php?key1=5&key2=ABC;
 
-      //$statusCode = $response->getStatusCode();
-      //$content = $response->getBody();
-
-      // or when your server returns json
       $content = $response->getBody();
-      //echo get_remote_data('https://servicodados.ibge.gov.br/api/v1/localidades/estados/'.$codigo.'/municipios');
+      
       return $content;
     }
 
