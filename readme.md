@@ -1,3 +1,3 @@
-Exemplo de aplicação com Laravel e Angular para cadastro de estudante.
+Exemplo de aplicação com Laravel e Angular para cadastro de estudantes.
 
 autor: Gustavo Bastos
