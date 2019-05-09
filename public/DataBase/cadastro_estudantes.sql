@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Maio-2019 às 10:58
+-- Generation Time: 09-Maio-2019 às 16:10
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -85,8 +85,7 @@ ALTER TABLE `estudantes`
 -- Indexes for table `maes`
 --
 ALTER TABLE `maes`
-  ADD PRIMARY KEY (`cpf`),
-  ADD KEY `estudante` (`estudante`);
+  ADD PRIMARY KEY (`estudante`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -96,7 +95,7 @@ ALTER TABLE `maes`
 -- AUTO_INCREMENT for table `estudantes`
 --
 ALTER TABLE `estudantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
