@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Cadastro de Estudantes</title>
+  <title>Colégio</title>
   <base href="/">
   <!-- As a link -->
 
@@ -12,7 +12,7 @@
 <body>
 
   <ce-root></ce-root>
-  
+
 <script type="text/javascript" src="js/runtime.js"></script>
 <script type="text/javascript" src="js/es2015-polyfills.js" nomodule></script>
 <script type="text/javascript" src="js/polyfills.js"></script>

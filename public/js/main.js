@@ -191,7 +191,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -686,7 +686,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container mt-4 ml-4 mb-4\">\n<div class = \"row\">\n  <div class=\"col-11\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-1\">\n    <a [routerLink]=\"['cadastrar']\"><i class=\"fas fa-user-plus fa-3x mt-3 text-primary\"></i></a>\n  </div>\n</div>\n</div>\n\n<div class = \"container mt-5\" *ngFor=\"let estudante of estudantes\">\n<hr>\n<div class = \"row mb-1\" >\n    <div class = \"col-4 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-1\">\n      <form [routerLink]=\"['editar',estudante.id]\" method=\"get\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-2 float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-1\">\n      <ce-ngbd-modal-focus id=\"{{estudante.id}}\"></ce-ngbd-modal-focus>\n    </div>\n</div>\n</div>\n<br><br><br>\n"
+module.exports = "<div class = \"container mt-4 ml-4 mb-4\">\n<div class = \"row\">\n  <div class=\"col-10\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-2\">\n    <a [routerLink]=\"['cadastrar']\"><i class=\"fas fa-user-plus fa-3x mt-3  text-primary\"></i></a>\n  </div>\n</div>\n</div>\n\n<div class = \"container mt-5\" *ngFor=\"let estudante of estudantes\">\n<hr>\n<div class = \"row mb-1\" >\n    <div class = \"col-4 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-1\">\n      <form [routerLink]=\"['editar',estudante.id]\" method=\"get\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-2 float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-1\">\n      <ce-ngbd-modal-focus id=\"{{estudante.id}}\"></ce-ngbd-modal-focus>\n    </div>\n</div>\n</div>\n<br><br><br>\n"
 
 /***/ }),
 
