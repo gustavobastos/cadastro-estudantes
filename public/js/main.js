@@ -619,7 +619,7 @@ var EditarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -630,7 +630,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container\" id=\"header\">\n<div class=\"row\">\n    <div class=\"col-12 topo\">\n      <div class=\"row\">\n        <div class=\"col-1\">\n          <img class =\"logo  ml-2 \" src =\"img/logo.png\">\n        </div>\n      </div>\n    </div>\n</div>\n\n<div class=\"row\">\n  <img class=\"fundo\" src =\"img/fundo.jpg\">\n</div>\n<div class=\"row imagens justify-content-center\">\n    <div class=\"col-3\" >\n      <img  class=\"arredondado mr-3\" src =\"img/foto2.png\">\n    </div>\n    <div class=\"col-3\" >\n      <img  class=\"arredondado mr-3\" src =\"img/foto3.png\">\n    </div>\n    <div class=\"col-3\" >\n        <img  class=\"arredondado mr-3\"  src =\"img/foto1.png\">\n    </div>\n</div>\n\n<div class=\"row\">\n  <nav class=\"col-12 navbar navbar-expand-lg navbar-dark menu\">\n  <a class=\"navbar-brand\" href=\"#\"></a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['']\">Alunos</a>\n      </li>\n    </ul>\n  </div>\n</nav>\n</div>\n<div>\n"
+module.exports = "<div class = \"container\" id=\"header\">\n<div class=\"row\">\n    <div class=\"col-12 topo\">\n      <div class=\"row\">\n        <div class=\"col-1\">\n          <img class =\"logo  ml-2 \" src =\"img/logo.png\">\n        </div>\n      </div>\n    </div>\n</div>\n\n<div class=\"row\">\n  <img class=\"fundo\" src =\"img/fundo.jpg\">\n</div>\n<div class=\"row imagens justify-content-center\">\n    <div class=\"col-3 mr-4\" >\n      <img  class=\"arredondado \" src =\"img/foto2.png\">\n    </div>\n    <div class=\"col-3 mr-4\" >\n      <img  class=\"arredondado\" src =\"img/foto3.png\">\n    </div>\n    <div class=\"col-3\" >\n        <img  class=\"arredondado mr-3\"  src =\"img/foto1.png\">\n    </div>\n</div>\n\n<div class=\"row\">\n  <nav class=\"col-12 navbar navbar-expand-lg navbar-dark menu\">\n  <a class=\"navbar-brand\" href=\"#\"></a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['']\">Alunos</a>\n      </li>\n    </ul>\n  </div>\n</nav>\n</div>\n<div>\n"
 
 /***/ }),
 
