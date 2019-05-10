@@ -358,8 +358,6 @@ var CadastrarComponent = /** @class */ (function () {
         this.apiServe = apiServe;
         this.cepValido = false;
         this.cpfValido = false;
-        this.cepValido = false;
-        this.cpfValido = false;
         this.cep = "vazio";
     }
     CadastrarComponent.prototype.ngOnInit = function () {
@@ -504,6 +502,7 @@ var EditarComponent = /** @class */ (function () {
         this.route = route;
         this.cepValido = true;
         this.cpfValido = true;
+        this.cep = "vazio";
     }
     EditarComponent.prototype.ngOnInit = function () {
         var _this = this;
