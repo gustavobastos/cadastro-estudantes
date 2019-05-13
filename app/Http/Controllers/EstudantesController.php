@@ -17,8 +17,10 @@ class EstudantesController extends Controller
 
       public function index()
       {
-          //
+          
           return \App\Estudante::all();
+
+
       }
 
 
@@ -28,7 +30,7 @@ class EstudantesController extends Controller
       $query->where('id', '=', $id);
 
       $rows = $query->get()->toArray();
-      return json_encode($rows[0]);
+      return json_encode($rows);
     }
 
     public function endereco($id)
@@ -38,7 +40,7 @@ class EstudantesController extends Controller
       $query->where('estudante', '=', $id);
 
       $rows = $query->get()->toArray();
-      return json_encode($rows[0]);
+      return json_encode($rows);
     }
 
     /**
@@ -56,25 +58,11 @@ class EstudantesController extends Controller
 
       $rows = $query->get()->toArray();
 
-      return json_encode($rows[0]);
-
-    }
-
-    /**
-     * @return \Illuminate\Http\Response
-     */
-    public function estados()
-    {
-
-      $query = DB::table('estados');
-      $query->select('sigla','codigo_ibge');
-
-
-      $rows = $query->get()->toArray();
-
       return json_encode($rows);
 
     }
+
+
 
     public function cep($cep)
     {
@@ -96,21 +84,6 @@ class EstudantesController extends Controller
         return "vazio";
       }
 
-      return $content;
-    }
-
-    public function cidades($codigo)
-    {
-
-      $endpoint = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/$codigo/municipios";
-      $client = new \GuzzleHttp\Client();
-
-
-      $response = $client->request('GET', $endpoint);
-
-
-      $content = $response->getBody();
-      
       return $content;
     }
 
@@ -148,18 +121,18 @@ class EstudantesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
 
       DB::table('estudantes')
-          ->where('id', $request->id)
+          ->where('id', $id)
           ->update(['nome' => $request->nome,
           'nascimento' => $request->nascimento,
           'serie_ingresso' => $request->serie_ingresso]
           );
 
       DB::table('enderecos')
-              ->where('estudante', $request->id)
+              ->where('estudante', $id)
               ->update(['estado' => $request->estado,
               'cidade' => $request->cidade,
               'cep' => $request->cep,
@@ -170,7 +143,7 @@ class EstudantesController extends Controller
             ]);
 
       DB::table('maes')
-              ->where('estudante', $request->id)
+              ->where('estudante', $id)
               ->update(['nome' => $request->nomeMae,
               'cpf' => $request->cpf,
               'data_pagamento' => $request->data_pagamento]

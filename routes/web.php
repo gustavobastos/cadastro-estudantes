@@ -22,12 +22,11 @@ Route::get('/alunos', function () {
 
 Route::resource('estudantes','EstudantesController');
 Route::post('estudantes/delete/','EstudantesController@delete');
-Route::get('estados','EstudantesController@estados');
 Route::get('cidades/{id}','EstudantesController@cidades');
 Route::get('estudantes/estudante/{id}','EstudantesController@estudante');
 Route::get('estudantes/endereco/{id}','EstudantesController@endereco');
 Route::get('estudantes/mae/{id}','EstudantesController@mae');
-Route::post('estudantes/update','EstudantesController@update');
+Route::post('estudantes/update/{id}','EstudantesController@update');
 Route::post('estudantes/cadastra','EstudantesController@cadastra');
 Route::get('estudantes/delete/{id}','EstudantesController@delete');
 Route::get('cep/{id}','EstudantesController@cep');
