@@ -579,7 +579,6 @@ var FormularioComponent = /** @class */ (function () {
                 _this.defineValoresFormulario('', '');
             }
             else if (("" + val).length == 8 && _this.cepValido == false) {
-                _this.cepValido = true;
                 _this.verificaCep("" + val);
             }
         });
