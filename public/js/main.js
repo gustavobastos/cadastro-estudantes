@@ -520,8 +520,8 @@ var FormularioComponent = /** @class */ (function () {
             complemento: this.formBuilder.control(''),
             bairro: this.formBuilder.control('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
             cep: this.formBuilder.control('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
-            cidade: this.formBuilder.control(''),
-            estado: this.formBuilder.control('')
+            cidade: this.formBuilder.control('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            estado: this.formBuilder.control('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])
         });
         if (this.acao == "Salvar") {
             this.url = "/estudantes/update/" + this.id;
@@ -586,7 +586,7 @@ var FormularioComponent = /** @class */ (function () {
     FormularioComponent.prototype.verificaCep = function (cepIn) {
         var _this = this;
         this.apiService.getCep(cepIn).subscribe(function (cep) {
-            if (cep == "vazio") {
+            if (cep == "vazio" || cep['erro'] == true) {
                 _this.cepValido = false;
                 return;
             }
