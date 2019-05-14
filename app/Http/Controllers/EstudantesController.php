@@ -17,7 +17,7 @@ class EstudantesController extends Controller
 
       public function index()
       {
-          
+
           return \App\Estudante::all();
 
 
@@ -160,9 +160,8 @@ class EstudantesController extends Controller
      */
     public function delete($id)
     {
-
           DB::table('estudantes')->delete([$id]);
-          return redirect()->route('alunos', ['cod' => "sucess"]);
+          return '{"resultado" : "sucesso"}';
     }
 
 }

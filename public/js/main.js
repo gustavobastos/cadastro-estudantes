@@ -59,20 +59,6 @@ var ApiService = /** @class */ (function () {
             });
         });
     };
-    ApiService.prototype.delete = function (id) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var response;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.http.get('/estudantes/delete/' + id)
-                            .toPromise()];
-                    case 1:
-                        response = _a.sent();
-                        return [2 /*return*/, (response.json())];
-                }
-            });
-        });
-    };
     ApiService.prototype.getCep = function (cep) {
         return this.http.get('/cep/' + cep)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (response) { return response.json(); }));
@@ -99,6 +85,12 @@ var ApiService = /** @class */ (function () {
         var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_3__["Headers"]();
         headers.append('Content-Type', 'application/json');
         return this.http.get('/estudantes/mae/' + id)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (response) { return response.json(); }));
+    };
+    ApiService.prototype.delete = function (id) {
+        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_3__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('/estudantes/delete/' + id)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (response) { return response.json(); }));
     };
     ApiService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -140,7 +132,8 @@ var routes = [
     { path: '', redirectTo: '/alunos', pathMatch: 'full' },
     { path: 'alunos', component: _listar_listar_component__WEBPACK_IMPORTED_MODULE_3__["ListarComponent"] },
     { path: 'alunos/editar/:id', component: _editar_editar_component__WEBPACK_IMPORTED_MODULE_5__["EditarComponent"] },
-    { path: 'alunos/cadastrar', component: _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_4__["CadastrarComponent"] }
+    { path: 'alunos/cadastrar', component: _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_4__["CadastrarComponent"] },
+    { path: 'alunos/operacao/:operacao', component: _listar_listar_component__WEBPACK_IMPORTED_MODULE_3__["ListarComponent"] },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -176,7 +169,7 @@ module.exports = "\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJz
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n<ce-header></ce-header>\n</header>\n<div class=\"container content\">\n<router-outlet></router-outlet>\n</div>\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\">Modal title</h5>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        <p>Modal body text goes here.</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<header>\n<ce-header></ce-header>\n</header>\n<div class=\"container content\">\n<ce-snack-bar></ce-snack-bar>\n\n\n<router-outlet></router-outlet>\n\n</div>\n"
 
 /***/ }),
 
@@ -192,18 +185,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _formulario_formulario_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./formulario/formulario.component */ "./src/app/formulario/formulario.component.ts");
+
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(form) {
+        this.form = form;
         this.title = 'Escola';
+        this.parametro = '';
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.sub = this.form.getEvent()
+            .subscribe(function () {
+            _this.parametro = 'sucesso';
+            console.log(_this.parametro);
+        });
+    };
+    AppComponent.prototype.verificaResultado = function (event) {
+        this.parametro = event.target.value;
+        console.log(this.parametro);
+    };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'ce-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_formulario_formulario_component__WEBPACK_IMPORTED_MODULE_2__["FormularioComponent"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -226,18 +236,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _listar_listar_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./listar/listar.component */ "./src/app/listar/listar.component.ts");
-/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
-/* harmony import */ var _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./cadastrar/cadastrar.component */ "./src/app/cadastrar/cadastrar.component.ts");
-/* harmony import */ var _estudante__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./estudante */ "./src/app/estudante.ts");
-/* harmony import */ var _editar_editar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./editar/editar.component */ "./src/app/editar/editar.component.ts");
-/* harmony import */ var _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modal-focus/modal-focus.component */ "./src/app/modal-focus/modal-focus.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _formulario_formulario_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./formulario/formulario.component */ "./src/app/formulario/formulario.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _listar_listar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./listar/listar.component */ "./src/app/listar/listar.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./cadastrar/cadastrar.component */ "./src/app/cadastrar/cadastrar.component.ts");
+/* harmony import */ var _estudante__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./estudante */ "./src/app/estudante.ts");
+/* harmony import */ var _editar_editar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./editar/editar.component */ "./src/app/editar/editar.component.ts");
+/* harmony import */ var _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modal-focus/modal-focus.component */ "./src/app/modal-focus/modal-focus.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _formulario_formulario_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./formulario/formulario.component */ "./src/app/formulario/formulario.component.ts");
+/* harmony import */ var _snack_bar_snack_bar_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./snack-bar/snack-bar.component */ "./src/app/snack-bar/snack-bar.component.ts");
+
+
 
 
 
@@ -262,33 +276,35 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-                _listar_listar_component__WEBPACK_IMPORTED_MODULE_8__["ListarComponent"],
-                _header_header_component__WEBPACK_IMPORTED_MODULE_9__["HeaderComponent"],
-                _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_10__["CadastrarComponent"],
-                _editar_editar_component__WEBPACK_IMPORTED_MODULE_12__["EditarComponent"],
-                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_13__["NgbdModalFocus"],
-                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_13__["NgbdModalConfirm"],
-                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_13__["NgbdModalConfirmAutofocus"],
-                _formulario_formulario_component__WEBPACK_IMPORTED_MODULE_15__["FormularioComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
+                _listar_listar_component__WEBPACK_IMPORTED_MODULE_9__["ListarComponent"],
+                _header_header_component__WEBPACK_IMPORTED_MODULE_10__["HeaderComponent"],
+                _cadastrar_cadastrar_component__WEBPACK_IMPORTED_MODULE_11__["CadastrarComponent"],
+                _editar_editar_component__WEBPACK_IMPORTED_MODULE_13__["EditarComponent"],
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_14__["NgbdModalFocus"],
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_14__["NgbdModalConfirm"],
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_14__["NgbdModalConfirmAutofocus"],
+                _formulario_formulario_component__WEBPACK_IMPORTED_MODULE_16__["FormularioComponent"],
+                _snack_bar_snack_bar_component__WEBPACK_IMPORTED_MODULE_17__["SnackBarComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
-                _angular_http__WEBPACK_IMPORTED_MODULE_5__["HttpModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_6__["HttpModule"],
                 _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"]
             ],
             entryComponents: [
-                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_13__["NgbdModalConfirm"],
-                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_13__["NgbdModalConfirmAutofocus"]
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_14__["NgbdModalConfirm"],
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_14__["NgbdModalConfirmAutofocus"]
             ],
-            exports: [_modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_13__["NgbdModalConfirm"],
-                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_13__["NgbdModalConfirmAutofocus"]],
-            providers: [{ provide: "windowObject", useValue: window }, _estudante__WEBPACK_IMPORTED_MODULE_11__["Estudante"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+            exports: [_modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_14__["NgbdModalConfirm"],
+                _modal_focus_modal_focus_component__WEBPACK_IMPORTED_MODULE_14__["NgbdModalConfirmAutofocus"]],
+            providers: [_formulario_formulario_component__WEBPACK_IMPORTED_MODULE_16__["FormularioComponent"], _estudante__WEBPACK_IMPORTED_MODULE_12__["Estudante"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -485,8 +501,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
-/* harmony import */ var _editar_editar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../editar/editar.component */ "./src/app/editar/editar.component.ts");
-
 
 
 
@@ -503,7 +517,9 @@ var FormularioComponent = /** @class */ (function () {
         this.cep = '';
         this.url = "/estudantes/cadastra";
     }
-    FormularioComponent.prototype.ngAfterViewInit = function () {
+    FormularioComponent_1 = FormularioComponent;
+    FormularioComponent.prototype.getEvent = function () {
+        return FormularioComponent_1.operacaoRealizada;
     };
     FormularioComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -668,9 +684,12 @@ var FormularioComponent = /** @class */ (function () {
         this.apiService.enviaForm(this.form, this.url)
             .subscribe(function () {
             _this.cep = '';
+            FormularioComponent_1.operacaoRealizada.emit("sucesso");
             _this.router.navigate(['/alunos']);
         });
     };
+    var FormularioComponent_1;
+    FormularioComponent.operacaoRealizada = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
@@ -688,10 +707,10 @@ var FormularioComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
     ], FormularioComponent.prototype, "corBotao", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _editar_editar_component__WEBPACK_IMPORTED_MODULE_5__["EditarComponent"])
-    ], FormularioComponent.prototype, "editar", void 0);
-    FormularioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"])
+    ], FormularioComponent, "operacaoRealizada", void 0);
+    FormularioComponent = FormularioComponent_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'ce-formulario',
             template: __webpack_require__(/*! ./formulario.component.html */ "./src/app/formulario/formulario.component.html"),
@@ -713,7 +732,7 @@ var FormularioComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -780,7 +799,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container mt-4 ml-md-4 mb-4\">\n<div class = \"row\">\n  <div class=\"col-10\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-2\">\n    <a [routerLink]=\"['cadastrar']\"><i class=\"fas fa-user-plus fa-3x mt-3  text-primary\"></i></a>\n  </div>\n</div>\n</div>\n\n<div class = \"container mt-5\" *ngFor=\"let estudante of estudantes\">\n<hr>\n<div class = \"row mb-1\" >\n    <div class = \"col-md-4 col-sm-12 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-md-1 col-sm-6\">\n      <form [routerLink]=\"['editar',estudante.id]\" method=\"get\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-md-2  float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-md-1 col-sm-6\">\n      <ce-ngbd-modal-focus id=\"{{estudante.id}}\"></ce-ngbd-modal-focus>\n    </div>\n</div>\n</div>\n<br><br><br>\n"
+module.exports = "<div class = \"container mt-4 ml-md-4 mb-4\">\n<div class = \"row\">\n  <div class=\"col-10\">\n    <h4>Alunos</h4>\n  </div>\n  <div class=\"col-2\">\n    <a [routerLink]=\"['/alunos/cadastrar']\"><i class=\"fas fa-user-plus fa-3x mt-3  text-primary\"></i></a>\n  </div>\n</div>\n</div>\n\n<div class = \"container mt-5\" *ngFor=\"let estudante of estudantes\">\n<hr>\n<div class = \"row mb-1\" >\n    <div class = \"col-md-4 col-sm-12 mx-auto\">\n      <h5>{{estudante.nome}}</h5>\n    </div>\n    <div class = \"col-md-1 col-sm-6\">\n      <form [routerLink]=\"['/alunos/editar',estudante.id]\" method=\"get\">\n        <input type=\"hidden\" name=\"id\" value=\"{{estudante.id}}\">\n        <button type=\"submit\" class=\"btn btn-warning mr-md-2  float-right\">Editar</button>\n      </form>\n    </div>\n    <div class = \"col-md-1 col-sm-6\">\n      <ce-ngbd-modal-focus id=\"{{estudante.id}}\"></ce-ngbd-modal-focus>\n    </div>\n</div>\n</div>\n<br><br><br>\n"
 
 /***/ }),
 
@@ -860,6 +879,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api.service */ "./src/app/api.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
 
 
 
@@ -880,13 +903,20 @@ var ModalFocusComponent = /** @class */ (function () {
 }());
 
 var NgbdModalConfirm = /** @class */ (function () {
-    function NgbdModalConfirm(modal, window) {
+    function NgbdModalConfirm(modal, apiService, router) {
         this.modal = modal;
+        this.apiService = apiService;
+        this.router = router;
     }
     NgbdModalConfirm_1 = NgbdModalConfirm;
     NgbdModalConfirm.prototype.deleta = function () {
-        window.location.href = "/estudantes/delete/" + NgbdModalConfirm_1.id;
-        this.modal.close('Ok click');
+        var _this = this;
+        this.apiService.delete(NgbdModalConfirm_1.id).subscribe(function (response) {
+            if (response['resultado'] == 'sucesso') {
+                location.reload();
+            }
+            _this.modal.close('Ok click');
+        });
     };
     var NgbdModalConfirm_1;
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -898,8 +928,7 @@ var NgbdModalConfirm = /** @class */ (function () {
             selector: 'ngbd-modal-confirm',
             template: "\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\" id=\"modal-title\">Deletar aluno</h4>\n    <button type=\"button\" class=\"close\" aria-describedby=\"modal-title\" (click)=\"modal.dismiss('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <p><strong>Voc\u00EA tem certeza que deseja exluir o(a) aluno(a) {{nome}}?</strong></p>\n    <p><span class=\"text-danger\">Esta opera\u00E7\u00E3o n\u00E3o poder\u00E1 ser desfeita.</span></p>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"btn btn-outline-secondary\" (click)=\"modal.dismiss('cancel click')\">Cancelar</button>\n    <button type=\"button\" class=\"btn btn-danger\" (click)=\"deleta()\">Sim</button>\n  </div>\n  "
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])("windowObject")),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbActiveModal"], Window])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbActiveModal"], _api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], NgbdModalConfirm);
     return NgbdModalConfirm;
 }());
@@ -943,6 +972,91 @@ var NgbdModalFocus = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"]])
     ], NgbdModalFocus);
     return NgbdModalFocus;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/snack-bar/snack-bar.component.css":
+/*!***************************************************!*\
+  !*** ./src/app/snack-bar/snack-bar.component.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".snack-bar{\n  background-color: #9FF781;\n  color: #000;\n  height: 40px;\n}\n\nh6{\n  margin-top: 10px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc25hY2stYmFyL3NuYWNrLWJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UseUJBQXlCO0VBQ3pCLFdBQVc7RUFDWCxZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxnQkFBZ0I7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9zbmFjay1iYXIvc25hY2stYmFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc25hY2stYmFye1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjOUZGNzgxO1xuICBjb2xvcjogIzAwMDtcbiAgaGVpZ2h0OiA0MHB4O1xufVxuXG5oNntcbiAgbWFyZ2luLXRvcDogMTBweDtcbn1cbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/snack-bar/snack-bar.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/snack-bar/snack-bar.component.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class = \"row snack-bar text-center\" [@snack-visibility] = \"snackVisibility\">\n  <div class=\"col-12\">\n    <h6>Operação realizada com sucesso!</h6>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/snack-bar/snack-bar.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/snack-bar/snack-bar.component.ts ***!
+  \**************************************************/
+/*! exports provided: SnackBarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SnackBarComponent", function() { return SnackBarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
+/* harmony import */ var _formulario_formulario_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../formulario/formulario.component */ "./src/app/formulario/formulario.component.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
+
+
+
+var SnackBarComponent = /** @class */ (function () {
+    function SnackBarComponent(form) {
+        this.form = form;
+        this.snackVisibility = "hidden";
+    }
+    SnackBarComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.form.getEvent()
+            .subscribe(function () {
+            _this.snackVisibility = 'visible';
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["timer"])(3000)
+                .subscribe(function () {
+                _this.snackVisibility = 'hidden';
+            });
+        });
+    };
+    SnackBarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'ce-snack-bar',
+            template: __webpack_require__(/*! ./snack-bar.component.html */ "./src/app/snack-bar/snack-bar.component.html"),
+            animations: [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["trigger"])('snack-visibility', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('hidden', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({
+                        opacity: 0
+                    })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["state"])('visible', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({
+                        opacity: 1
+                    })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('hidden => visible', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('100ms 0s ease-in')),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["transition"])('visible => hidden', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])('1000ms 0s ease-out'))
+                ])
+            ],
+            styles: [__webpack_require__(/*! ./snack-bar.component.css */ "./src/app/snack-bar/snack-bar.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_formulario_formulario_component__WEBPACK_IMPORTED_MODULE_3__["FormularioComponent"]])
+    ], SnackBarComponent);
+    return SnackBarComponent;
 }());
 
 
